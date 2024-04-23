@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: afa7ab05bd0a9d84e979b3c25d2bb8c8
+guid: 6bf71e0804d9eeb47bec2f7aac76631a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bobberInWater_0
+      name: funnyWave_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d275e5fa2c760444292cacc3c301402b
-      internalID: 1409681733
+      spriteID: 84c2919a3f0952b4990561a45260cbdf
+      internalID: -528908821
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bobberInWater_1
+      name: funnyWave_1
       rect:
         serializedVersion: 2
         x: 500
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5582712ea99589442bebabc0e0b9ca8b
-      internalID: 116536151
+      spriteID: 4e3ca6c9c7c22374db08344f26357665
+      internalID: -79288557
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bobberInWater_2
+      name: funnyWave_2
       rect:
         serializedVersion: 2
         x: 1000
@@ -166,8 +166,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e90f53bad67813b44ba2ccacb19e95a4
-      internalID: -2079877372
+      spriteID: 83554e12d677b334ab57e05c338ce092
+      internalID: 232555068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: funnyWave_3
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eafc6721801d21644b0a67cf31b4152e
+      internalID: 469267289
       vertices: []
       indices: 
       edges: []
@@ -183,9 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      bobberInWater_0: 1409681733
-      bobberInWater_1: 116536151
-      bobberInWater_2: -2079877372
+      funnyWave_0: -528908821
+      funnyWave_1: -79288557
+      funnyWave_2: 232555068
+      funnyWave_3: 469267289
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: afa7ab05bd0a9d84e979b3c25d2bb8c8
+guid: 9ad9c81c2cdd11141b197c375e4f2ca5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bobberInWater_0
+      name: normalFish_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d275e5fa2c760444292cacc3c301402b
-      internalID: 1409681733
+      spriteID: 28d8b1b73ea70ce4cbd3d1357518f86b
+      internalID: 359083410
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bobberInWater_1
+      name: normalFish_1
       rect:
         serializedVersion: 2
         x: 500
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5582712ea99589442bebabc0e0b9ca8b
-      internalID: 116536151
+      spriteID: 41db131d099311b44811b70152adbc0e
+      internalID: -195535579
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bobberInWater_2
+      name: normalFish_2
       rect:
         serializedVersion: 2
         x: 1000
@@ -166,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e90f53bad67813b44ba2ccacb19e95a4
-      internalID: -2079877372
+      spriteID: 4694374aa2ad498499fd362b8961d58a
+      internalID: -1526016085
       vertices: []
       indices: 
       edges: []
@@ -183,9 +183,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      bobberInWater_0: 1409681733
-      bobberInWater_1: 116536151
-      bobberInWater_2: -2079877372
+      normalFish_0: 359083410
+      normalFish_1: -195535579
+      normalFish_2: -1526016085
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

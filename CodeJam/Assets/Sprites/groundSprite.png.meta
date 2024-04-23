@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: afa7ab05bd0a9d84e979b3c25d2bb8c8
+guid: 1cbbdff8078b8be47b02bf59bc89f433
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bobberInWater_0
+      name: groundSprite_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 500
-        height: 500
+        width: 1080
+        height: 1920
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d275e5fa2c760444292cacc3c301402b
-      internalID: 1409681733
+      spriteID: 7cab978cfa02e0a499e9f971ce815958
+      internalID: -99301771
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bobberInWater_1
+      name: groundSprite_1
       rect:
         serializedVersion: 2
-        x: 500
+        x: 1080
         y: 0
-        width: 500
-        height: 500
+        width: 1080
+        height: 1920
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5582712ea99589442bebabc0e0b9ca8b
-      internalID: 116536151
+      spriteID: 49d4edfd64b20a3459b1bbf93423bd61
+      internalID: -1545639232
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bobberInWater_2
+      name: groundSprite_2
       rect:
         serializedVersion: 2
-        x: 1000
+        x: 2160
         y: 0
-        width: 500
-        height: 500
+        width: 1080
+        height: 1920
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e90f53bad67813b44ba2ccacb19e95a4
-      internalID: -2079877372
+      spriteID: 75556ada974362545bd5dc2705768f2f
+      internalID: 951097987
       vertices: []
       indices: 
       edges: []
@@ -183,9 +183,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      bobberInWater_0: 1409681733
-      bobberInWater_1: 116536151
-      bobberInWater_2: -2079877372
+      groundSprite_0: -99301771
+      groundSprite_1: -1545639232
+      groundSprite_2: 951097987
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
