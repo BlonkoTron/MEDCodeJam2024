@@ -16,7 +16,7 @@ public class Vibrator : MonoBehaviour
     public static AndroidJavaObject currentActivity;
     public static AndroidJavaObject vibrator;
 #endif
-    public static void Vibrate(long milliseconds = 250)
+    public static void Vibrate(long milliseconds = 250) // Vibrate for a specific amount of time. Default is 250ms.
     {
         if (isAndroid())
         {
@@ -27,14 +27,14 @@ public class Vibrator : MonoBehaviour
             Handheld.Vibrate();
         }
     }
-    public static void Cancel()
+    public static void Cancel() // Cancels the vibration
     {
         if (isAndroid())
         {
             vibrator.Call("cancel");
         }
     }
-    public static bool isAndroid()
+    public static bool isAndroid() // Checks if the platform is Android
     {
 #if UNITY_ANDROID && !UNITY_EDITOR
         return true;
