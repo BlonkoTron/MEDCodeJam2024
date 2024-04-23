@@ -12,4 +12,13 @@ public class Tester : MonoBehaviour
     {
         Vibrator.Vibrate(500); // vibrate for 0.5 seconds
     }
+    public void BeginLongVibration()
+    {
+        Vibrator.Vibrate(10000); // vibrate for 10 second
+    }
+    public void Stopvibration()
+    {
+        Vibrator.Cancel(); // Stop the vibration
+    }
+
 }
