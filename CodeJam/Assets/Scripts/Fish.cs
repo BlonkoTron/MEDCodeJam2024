@@ -9,5 +9,6 @@ public class Fish : Catch
         name = "Normal fish";
         score = 10;
         difficulty = 5;
+        catchInSeconds = 3;
     }
 }

@@ -11,6 +11,8 @@ public abstract class Catch
     public int difficulty;
     //private GameObject self;
 
+    public int catchInSeconds;
+
     private void Initialise()
     {
         

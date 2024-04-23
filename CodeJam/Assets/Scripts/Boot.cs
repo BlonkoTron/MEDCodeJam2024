@@ -9,5 +9,6 @@ public class Boot : Catch
         name = "old, rotting boot";
         score = 0;
         difficulty = 2;
+        catchInSeconds = 4;
     }
 }
