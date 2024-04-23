@@ -7,24 +7,19 @@ public class ThrowRod : MonoBehaviour
     public float threshold = 3.0f; // Set your threshold value here
     private bool isThrown = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        StartCoroutine(WaitAndMove());
-    }
-
+    
     // Update is called once per frame
     void Update()
     {
         Vector3 acceleration = Input.acceleration;
-        Debug.Log("Acceleration: " + acceleration);
+        
 
         if (acceleration.sqrMagnitude > threshold * threshold) // Compare squares for performance
         {
             Debug.Log("Acceleration exceeded threshold!");
-            // Add your code here to handle the acceleration exceeding the threshold
             isThrown = true;
-
+            StartCoroutine(WaitAndMove());
+            
         }
         if (acceleration.sqrMagnitude > threshold * threshold && isThrown == true)
         {
