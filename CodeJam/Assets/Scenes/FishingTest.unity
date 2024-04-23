@@ -245,7 +245,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 1604344596}
-  rod: {fileID: 1862572761}
 --- !u!4 &1498061653
 Transform:
   m_ObjectHideFlags: 0
@@ -403,11 +402,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84979ca2d2bd479409f5461df783b0af, type: 3}
---- !u!1 &1862572761 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3640861953520934666, guid: 84979ca2d2bd479409f5461df783b0af, type: 3}
-  m_PrefabInstance: {fileID: 1862572760}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

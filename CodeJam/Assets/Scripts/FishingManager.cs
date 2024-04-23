@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Events;
 
 public class FishingManager : MonoBehaviour
 { 
@@ -29,7 +30,8 @@ public class FishingManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        //ThrowRod.instance.OnUsingRod += StartFishing();
+        ThrowRod.instance.OnUsingRod += StartFishing;
+        ThrowRod.instance.OnPullRod += TryCatch;
 
         sprite.SetActive(false);
 
@@ -51,12 +53,14 @@ public class FishingManager : MonoBehaviour
 
     private void OnDisable()
     {
-        
+        ThrowRod.instance.OnUsingRod -= StartFishing;
+        ThrowRod.instance.OnPullRod -= TryCatch;
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         if (Input.GetMouseButtonDown(0)) //replace this with whatever initiates the fishing sequence
                                             //(i.e. when the bob is out on the water waiting for fish)
         {
@@ -70,6 +74,7 @@ public class FishingManager : MonoBehaviour
                 StartCoroutine(Wait());
             }
         }
+        
 
         if (hasCatch && isCatchable)
         {
@@ -134,6 +139,38 @@ public class FishingManager : MonoBehaviour
         sprite.GetComponent<SpriteRenderer>().color = Color.red;
 
         isCatchable = true;
+    }
+
+    private void TryCatch()
+    {
+        if (hasCatch && isCatchable)
+        {
+            //replace the Mouse control with touch
+            if (Input.GetMouseButtonDown(0))
+            {
+                // this is just a stand -in; connect this to D's code and update the inventory
+                inventory.Add(currentCatch);
+
+                Debug.Log($"Caught a {currentCatch.name}!");
+
+                //then triumphantly display the catch and return to the
+                //"not actively fishing" screen (before the fishing rod is cast out)
+
+                Reset();
+            }
+            else
+            {
+                catchingTimer += Time.deltaTime;
+            }
+
+            if (catchingTimer >= currentCatch.catchInSeconds)
+            {
+                Debug.Log("Took too long! The fish escaped!");
+                Reset();
+            }
+        }
+
+        Debug.Log("Nothing to catch :)");
     }
 
     private void Reset()
