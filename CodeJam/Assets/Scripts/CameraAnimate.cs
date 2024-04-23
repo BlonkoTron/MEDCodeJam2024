@@ -19,6 +19,10 @@ public class CameraAnimate : MonoBehaviour
     {
         StartCoroutine(MoveCam(moveTimer, transform.position, MoveToPosition.position));
     }
+    public void MoveToStart()
+    {
+        StartCoroutine(MoveCam(moveTimer,MoveToPosition.position,startPosition));
+    }
 
     private IEnumerator MoveCam(float time, Vector3 start, Vector3 end)
     {
