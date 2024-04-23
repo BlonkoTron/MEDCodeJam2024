@@ -26,8 +26,9 @@ public class FishingManager : MonoBehaviour
     public List<Catch> inventory = new();
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        
         sprite.SetActive(false);
 
         //generate the list of possible things to catch
@@ -41,6 +42,11 @@ public class FishingManager : MonoBehaviour
                 possibleCatches[i] = new Fish();
             }
         }
+    }
+
+    private void OnDisable()
+    {
+        
     }
 
     // Update is called once per frame
