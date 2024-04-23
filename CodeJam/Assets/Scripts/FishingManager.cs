@@ -26,6 +26,7 @@ public class FishingManager : MonoBehaviour
 
     //this is just a stand in until the real inventory is added
     public List<Catch> inventory = new();
+    bool usingMouse = false;
 
     // Start is called before the first frame update
     void Awake()
@@ -60,41 +61,9 @@ public class FishingManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if (Input.GetMouseButtonDown(0)) //replace this with whatever initiates the fishing sequence
-                                            //(i.e. when the bob is out on the water waiting for fish)
-        {
-            if (!isFishing)
-            {
-                //Deploy the fishing bob in restful animation
-                sprite.SetActive(true);
-                sprite.GetComponent<SpriteRenderer>().color = Color.white;
-
-                Debug.Log("Fishing initiated");
-                StartCoroutine(Wait());
-            }
-        }
-        
-
         if (hasCatch && isCatchable)
         {
-            //replace the Mouse control with touch
-            if (Input.GetMouseButtonDown(0))
-            {
-                // this is just a stand -in; connect this to D's code and update the inventory
-                inventory.Add(currentCatch);
-
-                Debug.Log($"Caught a {currentCatch.name}!");
-
-                //then triumphantly display the catch and return to the
-                //"not actively fishing" screen (before the fishing rod is cast out)
-
-                Reset();
-            }
-            else
-            {
-                catchingTimer += Time.deltaTime;
-            }
+            catchingTimer += Time.deltaTime;
 
             if (catchingTimer >= currentCatch.catchInSeconds)
             {
@@ -102,6 +71,54 @@ public class FishingManager : MonoBehaviour
                 Reset();
             }
         }
+        
+
+        if (usingMouse)
+        {
+
+            if (Input.GetMouseButtonDown(0)) //replace this with whatever initiates the fishing sequence
+                                             //(i.e. when the bob is out on the water waiting for fish)
+            {
+                if (!isFishing)
+                {
+                    //Deploy the fishing bob in restful animation
+                    sprite.SetActive(true);
+                    sprite.GetComponent<SpriteRenderer>().color = Color.white;
+
+                    Debug.Log("Fishing initiated");
+                    StartCoroutine(Wait());
+                }
+            }
+
+
+            if (hasCatch && isCatchable)
+            {
+                //replace the Mouse control with touch
+                if (Input.GetMouseButtonDown(0))
+                {
+                    // this is just a stand -in; connect this to D's code and update the inventory
+                    inventory.Add(currentCatch);
+
+                    Debug.Log($"<b>Caught a {currentCatch.name}!</b>");
+
+                    //then triumphantly display the catch and return to the
+                    //"not actively fishing" screen (before the fishing rod is cast out)
+
+                    Reset();
+                }
+                else
+                {
+                    catchingTimer += Time.deltaTime;
+                }
+
+                if (catchingTimer >= currentCatch.catchInSeconds)
+                {
+                    Debug.Log("Took too long! The fish escaped!");
+                    Reset();
+                }
+            }
+        }
+
     }
 
     void StartFishing()
@@ -145,32 +162,18 @@ public class FishingManager : MonoBehaviour
     {
         if (hasCatch && isCatchable)
         {
-            //replace the Mouse control with touch
-            if (Input.GetMouseButtonDown(0))
-            {
-                // this is just a stand -in; connect this to D's code and update the inventory
-                inventory.Add(currentCatch);
+            // this is just a stand-in; connect this to D's code and update the inventory
+            inventory.Add(currentCatch);
 
-                Debug.Log($"Caught a {currentCatch.name}!");
+            Debug.Log($"Caught a {currentCatch.name}!");
 
-                //then triumphantly display the catch and return to the
-                //"not actively fishing" screen (before the fishing rod is cast out)
+            //then triumphantly display the catch and return to the
+            //"not actively fishing" screen (before the fishing rod is cast out)
 
-                Reset();
-            }
-            else
-            {
-                catchingTimer += Time.deltaTime;
-            }
-
-            if (catchingTimer >= currentCatch.catchInSeconds)
-            {
-                Debug.Log("Took too long! The fish escaped!");
-                Reset();
-            }
+            Reset();
         }
 
-        Debug.Log("Nothing to catch :)");
+        Debug.Log("Nothing to catch yet :)");
     }
 
     private void Reset()
