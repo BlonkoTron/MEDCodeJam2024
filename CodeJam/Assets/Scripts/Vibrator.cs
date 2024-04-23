@@ -16,11 +16,11 @@ public class Vibrator : MonoBehaviour
     public static AndroidJavaObject currentActivity;
     public static AndroidJavaObject vibrator;
 #endif
-    public static void Vibrate(long milliseconds = 250) // Vibrate for a specific amount of time. Default is 250ms.
+    public static void Vibrate(long milliseconds = 250, int amplitude = 255)
     {
         if (isAndroid())
         {
-            vibrator.Call("vibrate", milliseconds);
+            vibrator.Call("vibrate", milliseconds, amplitude);
         }
         else
         {

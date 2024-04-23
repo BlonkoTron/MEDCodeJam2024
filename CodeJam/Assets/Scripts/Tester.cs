@@ -3,22 +3,16 @@ using UnityEngine.UI;
 
 public class Tester : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        Vibrator.Vibrate(1000); // Vibrate for 1 second
-    }
     public void Beginvibration()
     {
-        Vibrator.Vibrate(500); // vibrate for 0.5 seconds
+        Vibrator.Vibrate(500, 150); // Vibrate for 500 milliseconds with amplitude 150
     }
     public void BeginLongVibration()
     {
-        Vibrator.Vibrate(10000); // vibrate for 10 second
+        Vibrator.Vibrate(10000, 255); // vibrate for 10 second with amplitude 255
     }
     public void Stopvibration()
     {
         Vibrator.Cancel(); // Stop the vibration
     }
-
 }
