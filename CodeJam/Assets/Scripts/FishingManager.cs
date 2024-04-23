@@ -10,11 +10,15 @@ public class FishingManager : MonoBehaviour
     private int possibleFishes = 5;
     private int possibleBoots = 3;
 
-    public SpriteRenderer SpriteRenderer;
-    //private bool initiateFishing = false;
+    //the visual representation, assign in inspector
+    public GameObject sprite;
+   
 
     private bool isFishing = false;
     private bool hasCatch = false;
+    private bool isCatchable = false;
+
+    private float catchingTimer = 0f;
 
     private Catch currentCatch;
 
@@ -24,10 +28,7 @@ public class FishingManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //the sprite renderer is just for testing; instead connect to the actual
-        //fishing bob
-        SpriteRenderer = GetComponent<SpriteRenderer>();
-        SpriteRenderer.color = Color.white;
+        sprite.SetActive(false);
 
         //generate the list of possible things to catch
         possibleCatches = new Catch[possibleFishes + possibleBoots];
@@ -51,25 +52,40 @@ public class FishingManager : MonoBehaviour
             if (!isFishing)
             {
                 //Deploy the fishing bob in restful animation
+                sprite.SetActive(true);
+                sprite.GetComponent<SpriteRenderer>().color = Color.white;
 
                 Debug.Log("Fishing initiated");
                 StartCoroutine(Wait());
             }
-            else if (hasCatch) 
+        }
+
+        if (hasCatch && isCatchable)
+        {
+            //replace the Mouse control with touch
+            if (Input.GetMouseButtonDown(0))
             {
                 // this is just a stand -in; connect this to D's code and update the inventory
                 inventory.Add(currentCatch);
 
-                //remove the fishing bob
-                SpriteRenderer.color = Color.white;
-
                 Debug.Log($"Caught a {currentCatch.name}!");
-                isFishing = false;
 
                 //then triumphantly display the catch and return to the
                 //"not actively fishing" screen (before the fishing rod is cast out)
+
+                Reset();
             }
-        }   
+            else
+            {
+                catchingTimer += Time.deltaTime;
+            }
+
+            if (catchingTimer >= currentCatch.catchInSeconds)
+            {
+                Debug.Log("Took too long! The fish escaped!");
+                Reset();
+            }
+        }
     }
 
     IEnumerator Wait()
@@ -91,8 +107,21 @@ public class FishingManager : MonoBehaviour
 
         //instead of this, replace the "resting" fishing bob with the bouncing one
         //to indicate something having bitten
-        SpriteRenderer.color = Color.red;
-        
+        sprite.GetComponent<SpriteRenderer>().color = Color.red;
+
+        isCatchable = true;
+    }
+
+    private void Reset()
+    {
+        Debug.Log("Resetting...");
+        isFishing = false;
+        hasCatch = false;
+        isCatchable = false;
+        catchingTimer = 0f;
+
+        //remove the fishing bob
+        sprite.SetActive(false);
 
     }
 }
