@@ -19,8 +19,7 @@ public class AudioManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
     }
-    public void PlaySound()
+    public void PlaySound(string name)
     {
-
     }
 }
