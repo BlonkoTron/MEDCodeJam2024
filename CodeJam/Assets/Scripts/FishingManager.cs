@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class FishingManager : MonoBehaviour
 { 
@@ -28,8 +29,11 @@ public class FishingManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        
+        //ThrowRod.instance.OnUsingRod += StartFishing();
+
         sprite.SetActive(false);
+
+        
 
         //generate the list of possible things to catch
         possibleCatches = new Catch[possibleFishes + possibleBoots];
@@ -43,6 +47,7 @@ public class FishingManager : MonoBehaviour
             }
         }
     }
+
 
     private void OnDisable()
     {
@@ -91,6 +96,19 @@ public class FishingManager : MonoBehaviour
                 Debug.Log("Took too long! The fish escaped!");
                 Reset();
             }
+        }
+    }
+
+    void StartFishing()
+    {
+        if (!isFishing)
+        {
+            //Deploy the fishing bob in restful animation
+            sprite.SetActive(true);
+            sprite.GetComponent<SpriteRenderer>().color = Color.white;
+
+            Debug.Log("Fishing initiated");
+            StartCoroutine(Wait());
         }
     }
 
