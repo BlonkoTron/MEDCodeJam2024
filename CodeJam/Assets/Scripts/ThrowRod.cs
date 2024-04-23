@@ -35,9 +35,9 @@ void Update()
 }
 IEnumerator WaitAndMove()
 {
-    // Wait for a random amount of time between 1 and 20 seconds
+    // Wait for a random amount of time between 1 and 20 seconds before starting the time slot
     yield return new WaitForSeconds(Random.Range(1, 10));
-    Debug.Log("Started random wait!");
+    Debug.Log("The Fish is here!");
     // Start the time slot
     float startTime = Time.time;
     float timeSlotDuration = 3.0f; // Set the duration of the time slot here
