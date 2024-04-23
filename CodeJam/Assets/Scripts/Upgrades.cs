@@ -67,7 +67,18 @@ public class Upgrades : MonoBehaviour
     // Function for upgrading bait effectiveness
     bool UpgradeBait()
     {
-        // Similar logic as UpgradeStrength() for bait upgrade
+        // Check if enough money and upgrade is available
+        if (money >= upgradeCost && upgradeable > 0)
+        {
+            // Upgrade successful
+            upgradeable--; // Reduce available upgrades (optional)
+            return true;
+        }
+        else
+        {
+            // Not enough money or no more upgrades
+            return false;
+        }
     }
 
     // Function to update fishing mechanics based on upgrade levels
