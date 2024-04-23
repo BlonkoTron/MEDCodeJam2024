@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ThrowRod : MonoBehaviour
@@ -10,6 +11,22 @@ private bool isThrown = false;
 private float ignoreInputUntil = 0f;
 private float ignoreInputDuration = 1f; // Ignore input for 1 second
 
+public static ThrowRod instance;
+
+public delegate void UsingRod();
+
+public event UsingRod OnUsingRod;
+
+
+public event UsingRod OnPullRod;
+
+void Awake()
+{
+    if (instance == null)
+    {
+        instance = this;
+    }
+}
 void Update()
 {
     if (Time.time < ignoreInputUntil)
@@ -21,7 +38,7 @@ void Update()
 
     if (acceleration.sqrMagnitude > threshold * threshold && !isThrown)
     {
-        StartCoroutine(WaitAndMove());
+        OnUsingRod?.Invoke();
         Debug.Log("Thrown!");
         isThrown = true;
         ignoreInputUntil = Time.time + ignoreInputDuration; // Set the time until which to ignore input
@@ -29,6 +46,7 @@ void Update()
     else if (acceleration.sqrMagnitude > threshold * threshold && isThrown)
     {
         isThrown = false;
+        OnPullRod?.Invoke();
         Debug.Log("Pulled in!");
         ignoreInputUntil = Time.time + ignoreInputDuration; // Set the time until which to ignore input
     }
@@ -61,18 +79,7 @@ IEnumerator WaitAndMove()
         yield break; // Stop the coroutine here
         // Add your code here to handle the end of the time slot without action
     }
-     while (Time.time - startTime > timeSlotDuration)
-    {
-        // Check if the action has been performed
-        if (isThrown == false)
-        {
-            Debug.Log("Pulled too early!");
-            // Add your move code here
-            yield break; // Stop the coroutine here
-        }
-        yield return null; // Wait for the next frame
-    }
-    
+  
 }
 
 }
