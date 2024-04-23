@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ThrowRod : MonoBehaviour
 {
-    public float threshold = 1.0f; // Set your threshold value here
+    public float threshold = 3.0f; // Set your threshold value here
 
     // Start is called before the first frame update
     void Start()
