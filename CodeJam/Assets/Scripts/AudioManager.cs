@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    public static AudioManager instance;
 
-    public AudioClip[] soundClips;
+    public static AudioManager instance;
+    private static AudioSource soundPlayer;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -19,7 +20,12 @@ public class AudioManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
     }
-    public void PlaySound(string name)
+    private void Start()
     {
+        soundPlayer = GetComponentInChildren<AudioSource>();
+    }
+    public static void PlaySound(AudioClip clip)
+    {
+        soundPlayer.PlayOneShot(clip);
     }
 }

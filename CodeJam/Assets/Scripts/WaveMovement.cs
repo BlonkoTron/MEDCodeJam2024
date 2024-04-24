@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class WaveMovement : MonoBehaviour
 {
-    [SerializeField] private float waveSpeed=1;
-    [SerializeField] private float waveAmount=1;
+    [Header("Y-axis")]
+    [SerializeField] private float waveSpeedY=1;
+    [SerializeField] private float waveAmountY=1;
+    [Header("X-axis")]
 
+    [SerializeField] private float waveSpeedX = 1;
+    [SerializeField] private float waveAmountX = 1;
     void Update()
     {
-        transform.localPosition = new Vector3(0, Mathf.Sin(Time.time * waveSpeed)*waveAmount, 0);
+        transform.localPosition = new Vector3(Mathf.Sin(Time.time * waveSpeedX) * waveAmountX, Mathf.Sin(Time.time * waveSpeedY)*waveAmountY, 0);
     }
 }

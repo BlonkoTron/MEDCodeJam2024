@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class FishingManager : MonoBehaviour
 { 
@@ -16,7 +17,7 @@ public class FishingManager : MonoBehaviour
     public GameObject restSprite;
     public GameObject bouncingSprite;
 
-    public GameObject waitText;
+    public Text waitText;
 
     public GameObject presentationFlair;
     public GameObject catchPresentationObject;
@@ -49,7 +50,7 @@ public class FishingManager : MonoBehaviour
         bouncingSprite.SetActive(false);
 
         presentationFlair.SetActive(false);
-        waitText.SetActive(false);
+        
         
         /*
         //generate the list of possible things to catch
@@ -73,6 +74,8 @@ public class FishingManager : MonoBehaviour
         {
             possibleCatches.Add(new Boot());
         }
+        waitText = FindObjectOfType<Text>();
+        waitText.text = "Started the system, ready to fish...";
     }
 
     //unsubscribe from events to prevent memory mess
@@ -156,6 +159,7 @@ public class FishingManager : MonoBehaviour
 
     void StartFishing()
     {
+        waitText.text = "Starting fishing...";
         if (!isFishing)
         {
             //Deploy the fishing bob in restful animation
@@ -163,24 +167,28 @@ public class FishingManager : MonoBehaviour
             //restSprite.GetComponent<SpriteRenderer>().color = Color.white;
 
             Debug.Log("Fishing initiated");
+            waitText.text = "Fishing initiated, trying Coroutine...";
             StartCoroutine(Wait());
         }
+        else
+            waitText.text = "Already fishing.";
     }
 
     IEnumerator Wait()
     {
         Debug.Log("Starting to wait...");
-        waitText.SetActive(true);
+        waitText.text = "Starting to wait...";
         isFishing = true;
         //wait for 2-10 seconds: adjust the timing if needed
         yield return new WaitForSeconds(Random.Range(2, 10));
         Debug.Log("Something caught :)");
+        waitText.text = "Something caught!";
         ReadyToCatch();
     }
 
     void ReadyToCatch()
     {
-        waitText.SetActive(false);
+        waitText.text = "Ready to catch";
         Debug.Log("something has bit onto the fishing rod..");
         hasCatch = true;
         currentCatch = possibleCatches[Random.Range(0, possibleCatches.Count - 1)];
