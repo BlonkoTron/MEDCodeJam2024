@@ -1,42 +1,62 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class ThrowRod : MonoBehaviour
 {
-    public float threshold = 3.0f; // Set your threshold value here
-    private bool isThrown = false;
+public float threshold = 3.0f; // Set your threshold value here
+private bool isThrown = false;
 
-    // Start is called before the first frame update
-    void Start()
+private float ignoreInputUntil = 0f;
+private float ignoreInputDuration = 1f; // Ignore input for 1 second
+
+public static ThrowRod instance;
+
+public delegate void UsingRod();
+
+public event UsingRod OnUsingRod;
+
+
+public event UsingRod OnPullRod;
+
+void Awake()
+{
+    if (instance == null)
     {
-        StartCoroutine(WaitAndMove());
+        instance = this;
+    }
+}
+void Update()
+{
+    if (Time.time < ignoreInputUntil)
+    {
+        return; // Ignore input
     }
 
-    // Update is called once per frame
-    void Update()
+    Vector3 acceleration = Input.acceleration;
+
+    if (acceleration.sqrMagnitude > threshold * threshold && !isThrown)
     {
-        Vector3 acceleration = Input.acceleration;
-        Debug.Log("Acceleration: " + acceleration);
-
-        if (acceleration.sqrMagnitude > threshold * threshold) // Compare squares for performance
-        {
-            Debug.Log("Acceleration exceeded threshold!");
-            // Add your code here to handle the acceleration exceeding the threshold
-            isThrown = true;
-
-        }
-        if (acceleration.sqrMagnitude > threshold * threshold && isThrown == true)
-        {
-            Debug.Log("Rod is reeled in!");
-            isThrown = false;
-        }
+        OnUsingRod?.Invoke();
+        Debug.Log("Thrown!");
+        isThrown = true;
+        ignoreInputUntil = Time.time + ignoreInputDuration; // Set the time until which to ignore input
     }
+    else if (acceleration.sqrMagnitude > threshold * threshold && isThrown)
+    {
+        isThrown = false;
+        OnPullRod?.Invoke();
+        Debug.Log("Pulled in!");
+        ignoreInputUntil = Time.time + ignoreInputDuration; // Set the time until which to ignore input
+    }
+}
 IEnumerator WaitAndMove()
 {
-    // Wait for a random amount of time between 1 and 20 seconds
-    yield return new WaitForSeconds(Random.Range(1, 20));
-
+    // Wait for a random amount of time between 1 and 20 seconds before starting the time slot
+    yield return new WaitForSeconds(Random.Range(1, 10));
+    Debug.Log("The Fish is here!");
     // Start the time slot
     float startTime = Time.time;
     float timeSlotDuration = 3.0f; // Set the duration of the time slot here
@@ -44,22 +64,23 @@ IEnumerator WaitAndMove()
     // Wait until the end of the time slot
     while (Time.time - startTime < timeSlotDuration)
     {
-        // Check if the action has been performed
-        if (isThrown)
+         // Check if the action has been performed
+        if (isThrown == false)
         {
-            Debug.Log("Move action performed!");
-            // Add your move code here
-            break;
+            Debug.Log("Pulled at the right time!");
+            yield break; // Stop the coroutine here
         }
-        yield return null; // Wait for the next frame
+    yield return null; // Wait for the next frame
     }
 
     // If the action wasn't performed during the time slot
-    if (!isThrown)
+    if (isThrown)
     {
-        Debug.Log("Time slot ended without action!");
+        Debug.Log("Pulled too late!");
+        yield break; // Stop the coroutine here
         // Add your code here to handle the end of the time slot without action
     }
+  
 }
 
 }
