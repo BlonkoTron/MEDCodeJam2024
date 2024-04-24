@@ -14,6 +14,7 @@ public class Upgrades : MonoBehaviour
     public TMP_Text goldText; // Text object to display money (using Text with capital T)
     public TMP_Text baitCostText;
     public TMP_Text strengthCostText;
+    public TMP_Text fishCounterText;
     private int upgradeLevelStrength;
     private int upgradeLevelBait;
     public Button upgradeStrength; // Button to upgrade strength
@@ -25,24 +26,31 @@ public class Upgrades : MonoBehaviour
     {
         GetComponent<AudioSource>().clip = upgradeSound; // Assuming there's an AudioSource component attached
         money = 10; // Starting money
-        goldText.text = "Gold: " + money.ToString();
-        strengthCostText.text = "Cost: " + upgradeCostStrength.ToString();
-        baitCostText.text = "Cost: " + upgradeCostBait.ToString();
     }
 
     void Update()
     {
         // Check if enough money and upgrades are available (optional)
-        bool canUpgrade = money >= upgradeCostStrength && money >= upgradeCostBait
-            && upgradeableStrength > 0 && upgradeableBait > 0; // Assuming non-nullable
+        bool canUpgradeStrength = money >= upgradeCostStrength || upgradeableStrength == 0; // Assuming non-nullable
 
-        upgradeStrength.gameObject.SetActive(canUpgrade);
-        upgradeBait.gameObject.SetActive(canUpgrade);
+        bool canUpgradeBait = money >= upgradeCostBait || upgradeableBait == 0; // Assuming non-nullable
+
+        upgradeStrength.gameObject.SetActive(canUpgradeStrength);
+        upgradeBait.gameObject.SetActive(canUpgradeBait);
 
         // Update cost text if cost changes during gameplay
         strengthCostText.text = "Cost: " + upgradeCostStrength.ToString();
         baitCostText.text = "Cost: " + upgradeCostBait.ToString();
         goldText.text = "Gold: " + money.ToString();
+        fishCounterText.text = "Fish acquired: " /*+ fish.ToString()*/;
+        if (upgradeableStrength == 0)
+        {
+            strengthCostText.text = "Max";
+        }
+        if (upgradeableBait == 0)
+        {
+            baitCostText.text = "Max";
+        }
     }
 
     public void UpgradeStrength() // Renamed for clarity
