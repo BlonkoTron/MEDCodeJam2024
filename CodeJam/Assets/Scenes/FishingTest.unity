@@ -702,7 +702,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restSprite: {fileID: 1604344596}
   bouncingSprite: {fileID: 819149764}
-  waitText: {fileID: 1377430468}
+  waitText: {fileID: 1377430470}
   presentationFlair: {fileID: 694221606}
   catchPresentationObject: {fileID: 0}
   normalFishPrefab: {fileID: 8222649185754937745, guid: 301df99a92e6640aca4d88fc4f1dfdd9, type: 3}
@@ -916,9 +916,9 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 736699714}
-  - {fileID: 1498061653}
   - {fileID: 863804315}
   - {fileID: 982851033}
   - {fileID: 694221608}
   - {fileID: 1699063090}
   - {fileID: 513508178}
+  - {fileID: 1498061653}
