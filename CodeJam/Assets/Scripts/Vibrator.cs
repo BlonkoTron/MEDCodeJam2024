@@ -21,6 +21,7 @@ public class Vibrator : MonoBehaviour
         if (isAndroid())
         {
             vibrator.Call("vibrate", milliseconds, amplitude);
+            Debug.Log(Debug.isDebugBuild ? milliseconds.ToString() : "");
         }
         else
         {
