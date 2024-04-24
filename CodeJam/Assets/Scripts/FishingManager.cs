@@ -78,11 +78,6 @@ public class FishingManager : MonoBehaviour
             possibleCatches.Add(new Fish());
         }
 
-        foreach (Catch i in possibleCatches)
-        {
-            Debug.Log(i.name);
-        }
-
         waitText = FindObjectOfType<Text>();
         waitText.text = "Started the system, ready to fish...";
     }
