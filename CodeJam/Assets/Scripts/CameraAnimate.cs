@@ -16,6 +16,14 @@ public class CameraAnimate : MonoBehaviour
     {
         startPosition = transform.position;
         catchPosition = new Vector3(catchPositionTransform.position.x, catchPositionTransform.position.y, transform.position.z);
+        ThrowRod.instance.OnUsingRod += MoveToCatch;
+        ThrowRod.instance.OnPullRod += MoveToStart;
+    }
+
+    private void OnDisable()
+    {
+        ThrowRod.instance.OnUsingRod -= MoveToCatch;
+        ThrowRod.instance.OnPullRod -= MoveToStart;
     }
 
     public void MoveToCatch()
@@ -23,10 +31,13 @@ public class CameraAnimate : MonoBehaviour
         StartCoroutine(MoveCam(moveTimer, transform.position, catchPosition));
         AudioManager.PlaySound(throwSound);
     }
+
     public void MoveToStart()
     {
         StartCoroutine(MoveCam(moveTimer, transform.position, startPosition));
     }
+
+    //
     public void PullBack(float pullAmount)
     {
         var pull = transform.position.y - pullAmount;
@@ -36,6 +47,7 @@ public class CameraAnimate : MonoBehaviour
         }
         MoveToPosition(new Vector3(0, pull, 0));
     }
+
     public void MoveToPosition(Vector3 newPos)
     {
         Vector3 movePos = new Vector3(newPos.x, newPos.y, transform.position.z);

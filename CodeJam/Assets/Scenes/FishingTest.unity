@@ -451,6 +451,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &839813169 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7615273909339215127, guid: 404d51523bafde14a9685c1b612e78e6, type: 3}
+  m_PrefabInstance: {fileID: 1312163276}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &863804315
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -592,6 +597,67 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1312163276
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6404750247101758040, guid: 404d51523bafde14a9685c1b612e78e6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6404750247101758040, guid: 404d51523bafde14a9685c1b612e78e6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6404750247101758040, guid: 404d51523bafde14a9685c1b612e78e6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6404750247101758040, guid: 404d51523bafde14a9685c1b612e78e6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6404750247101758040, guid: 404d51523bafde14a9685c1b612e78e6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6404750247101758040, guid: 404d51523bafde14a9685c1b612e78e6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6404750247101758040, guid: 404d51523bafde14a9685c1b612e78e6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6404750247101758040, guid: 404d51523bafde14a9685c1b612e78e6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6404750247101758040, guid: 404d51523bafde14a9685c1b612e78e6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6404750247101758040, guid: 404d51523bafde14a9685c1b612e78e6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7615273909339215127, guid: 404d51523bafde14a9685c1b612e78e6, type: 3}
+      propertyPath: m_Name
+      value: CatchParticle
+      objectReference: {fileID: 0}
+    - target: {fileID: 7615273909339215127, guid: 404d51523bafde14a9685c1b612e78e6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 404d51523bafde14a9685c1b612e78e6, type: 3}
 --- !u!1 &1377430468
 GameObject:
   m_ObjectHideFlags: 0
@@ -703,7 +769,7 @@ MonoBehaviour:
   restSprite: {fileID: 1604344596}
   bouncingSprite: {fileID: 819149764}
   waitText: {fileID: 1377430470}
-  presentationFlair: {fileID: 694221606}
+  presentationFlair: {fileID: 839813169}
   catchPresentationObject: {fileID: 0}
   normalFishPrefab: {fileID: 8222649185754937745, guid: 301df99a92e6640aca4d88fc4f1dfdd9, type: 3}
   bootPrefab: {fileID: 937954810884200961, guid: 66b4b4599a205422fb842d9f42a0831a, type: 3}
@@ -922,3 +988,4 @@ SceneRoots:
   - {fileID: 1699063090}
   - {fileID: 513508178}
   - {fileID: 1498061653}
+  - {fileID: 1312163276}

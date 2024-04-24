@@ -27,9 +27,9 @@ public class FishingManager : MonoBehaviour
    
 
     private bool isFishing = false;
-    //private bool hasCatch = false;
+    private bool isDisplaying = false;
     private bool isCatchable = false;
-    //private bool notCaughtYet = false;
+    
 
     private float catchingTimer = 0f;
 
@@ -39,6 +39,7 @@ public class FishingManager : MonoBehaviour
 
     //this is just a stand in until the real inventory is added
     public List<Catch> inventory = new();
+
     public bool usingMouse = false;
 
     // Start is called before the first frame update
@@ -96,7 +97,7 @@ public class FishingManager : MonoBehaviour
         {
             catchingTimer += Time.deltaTime;
 
-            if (catchingTimer >= currentCatch.catchInSeconds)
+            if (catchingTimer >= currentCatch.catchInSeconds && !isDisplaying)
             {
                 Debug.Log("Took too long! The fish escaped!");
                 Reset();
@@ -105,7 +106,6 @@ public class FishingManager : MonoBehaviour
 
         if (usingMouse)
         {
-
             if (Input.GetMouseButtonDown(0)) //replace this with whatever initiates the fishing sequence
                                              //(i.e. when the bob is out on the water waiting for fish)
             {
@@ -116,6 +116,11 @@ public class FishingManager : MonoBehaviour
             {
                 TryCatch();
             }
+        }
+
+        if (isDisplaying && Input.GetMouseButtonDown(0))
+        {
+            Reset();
         }
 
     }
@@ -159,7 +164,7 @@ public class FishingManager : MonoBehaviour
         currentCatch = possibleCatches[Random.Range(0, possibleCatches.Count - 1)];
         waitText.text = "trying to vibrate";
         Vibrator.Vibrate(currentCatch.catchInSeconds* convertToMilliseconds);  // This Needs to be tested
-        Debug.Log(currentCatch.catchInSeconds);
+        //Debug.Log(currentCatch.catchInSeconds);
 
         //instead of this, replace the "resting" fishing bob with the bouncing one
         //to indicate something having bitten
@@ -201,6 +206,8 @@ public class FishingManager : MonoBehaviour
     public void DisplayCatch(Catch type)
     {
         waitText.text = "trying to display";
+        isDisplaying = true;
+
         //remove the fishing bob
         bouncingSprite.SetActive(false);
 
@@ -219,7 +226,6 @@ public class FishingManager : MonoBehaviour
                 break;
         }
 
-        Invoke("Reset", 3);
     }
 
     private void Reset()
@@ -229,6 +235,7 @@ public class FishingManager : MonoBehaviour
         presentationFlair.SetActive(false);
         Destroy(catchPresentationObject);
         isFishing = false;
+        isDisplaying = false;
         
         isCatchable = false;
         catchingTimer = 0f;
