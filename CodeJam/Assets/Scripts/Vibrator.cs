@@ -36,7 +36,7 @@ public class Vibrator : MonoBehaviour
             vibrator.Call("cancel");
         }
     }
-    public static bool isAndroid() // Checks if the platform is Android
+    private static bool isAndroid() // Checks if the platform is Android
     {
 #if UNITY_ANDROID && !UNITY_EDITOR
         return true;
