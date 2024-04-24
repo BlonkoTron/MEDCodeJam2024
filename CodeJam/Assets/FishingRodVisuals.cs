@@ -19,8 +19,4 @@ public class FishingRodVisuals : MonoBehaviour
     {
         ThrowRod.instance.OnUsingRod -= ThrowingRod;
     }
-    private void OnEnable()
-    {
-        ThrowRod.instance.OnUsingRod += ThrowingRod;
-    }
 }
