@@ -6,9 +6,9 @@ public class Boot : Catch
 {
     public Boot()
     {
-        name = "old, rotting boot";
+        name = "old rotting boot";
         score = 0;
-        difficulty = 2;
+        
         catchInSeconds = 4;
     }
 }

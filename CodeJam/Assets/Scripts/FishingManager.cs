@@ -6,15 +6,22 @@ using UnityEngine.Events;
 
 public class FishingManager : MonoBehaviour
 { 
-    private Catch[] possibleCatches;
+    private List<Catch> possibleCatches = new();
 
     //adjust these based on the probabilities we want
-    private int possibleFishes = 5;
+    private int possibleFishes = 15;
     private int possibleBoots = 3;
 
     //the visual representation, assign in inspector
     public GameObject restSprite;
     public GameObject bouncingSprite;
+
+
+    public GameObject presentationFlair;
+    public GameObject catchPresentationObject;
+
+    public GameObject normalFishPrefab;
+    public GameObject bootPrefab;
    
 
     private bool isFishing = false;
@@ -30,7 +37,7 @@ public class FishingManager : MonoBehaviour
     public bool usingMouse = false;
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         //subscribe to events
         ThrowRod.instance.OnUsingRod += StartFishing;
@@ -39,8 +46,10 @@ public class FishingManager : MonoBehaviour
         //disappear the fishing bob until fishing starts
         restSprite.SetActive(false);
         bouncingSprite.SetActive(false);
-        
 
+        presentationFlair.SetActive(false);
+        
+        /*
         //generate the list of possible things to catch
         possibleCatches = new Catch[possibleFishes + possibleBoots];
         for (int i = possibleCatches.Length-1; i>=0; i--)
@@ -51,6 +60,16 @@ public class FishingManager : MonoBehaviour
             {
                 possibleCatches[i] = new Fish();
             }
+        }
+        */
+
+        for (int i = possibleBoots; i>=0; i--)
+        {
+            possibleCatches.Add(new Boot());
+        }
+        for (int i = possibleFishes; i >= 0; i--)
+        {
+            possibleCatches.Add(new Boot());
         }
     }
 
@@ -160,7 +179,7 @@ public class FishingManager : MonoBehaviour
     {
         Debug.Log("something has bit onto the fishing rod..");
         hasCatch = true;
-        currentCatch = possibleCatches[Random.Range(0, possibleCatches.Length - 1)];
+        currentCatch = possibleCatches[Random.Range(0, possibleCatches.Count - 1)];
         Vibrator.Vibrate(currentCatch.catchInSeconds, 255);  // This Needs to be tested
 
         //instead of this, replace the "resting" fishing bob with the bouncing one
@@ -184,22 +203,47 @@ public class FishingManager : MonoBehaviour
             //then triumphantly display the catch and return to the
             //"not actively fishing" screen (before the fishing rod is cast out)
 
-            Reset();
+            DisplayCatch(currentCatch);
         }
         else
             Debug.Log("Nothing to catch yet :)");
     }
 
+    public void DisplayCatch(Catch type)
+    {
+        //remove the fishing bob
+        bouncingSprite.SetActive(false);
+
+        //activate the triumphant display
+        presentationFlair.SetActive(true);
+        switch (type.name)
+        {
+            case "normal fish":
+                catchPresentationObject = Instantiate(normalFishPrefab, Vector3.zero, Quaternion.identity);
+                break;
+            case "old rotting boot":
+                catchPresentationObject = Instantiate(bootPrefab, Vector3.zero, Quaternion.identity);
+                break;
+            default:
+                Debug.Log("you messed something up and fished something that we haven't programmed yet :(");
+                break;
+        }
+
+
+        Invoke("Reset", 3);
+    }
+
     private void Reset()
     {
         Debug.Log("Resetting...");
+        presentationFlair.SetActive(false);
+        Destroy(catchPresentationObject);
         isFishing = false;
         hasCatch = false;
         isCatchable = false;
         catchingTimer = 0f;
 
-        //remove the fishing bob
-        bouncingSprite.SetActive(false);
+        
         Debug.Log("Fishing has reset.");
 
     }
