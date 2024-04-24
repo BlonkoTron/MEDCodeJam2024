@@ -7,6 +7,8 @@ public class Vibrator : MonoBehaviour
 {
     // Code refrence https://www.youtube.com/watch?v=o6xVLzs1kVk&list=PL-tWl7XQF8U-RXQgjBzp3M_6hf2ZthnQy&index=2 
 
+    // regular if-else statements conditions will be evaluated when the script runs, not during compilation. The preprocessor directives are evaluated during compilation.
+
 #if UNITY_ANDROID && !UNITY_EDITOR
     public static AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
     public static AndroidJavaObject currentActivity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
@@ -27,8 +29,6 @@ public class Vibrator : MonoBehaviour
             Handheld.Vibrate();
         }
     }
-
-
     public static void Cancel() // Cancels the vibration
     {
         if (isAndroid())
@@ -44,7 +44,6 @@ public class Vibrator : MonoBehaviour
         return false;
 #endif
     }
-
     /* When using Amp it dosent work in the build version ;(
 public static void Vibrate(long milliseconds = 250, int amplitude = 255) // Vibrate for a given number of milliseconds with a given amplitude
 {
