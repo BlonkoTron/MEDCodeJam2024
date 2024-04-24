@@ -77,6 +77,12 @@ public class FishingManager : MonoBehaviour
         {
             possibleCatches.Add(new Boot());
         }
+
+        foreach (Catch i in possibleCatches)
+        {
+            Debug.Log(i.name);
+        }
+
         waitText = FindObjectOfType<Text>();
         waitText.text = "Started the system, ready to fish...";
     }
@@ -179,7 +185,6 @@ public class FishingManager : MonoBehaviour
             // this is just a stand-in; connect this to D's code and update the inventory
             inventory.Add(currentCatch);
 
-
             waitText.text = "Success!";
             Debug.Log($"Caught a {currentCatch.name}!");
 
@@ -218,7 +223,6 @@ public class FishingManager : MonoBehaviour
                 Debug.Log("you messed something up and fished something that we haven't programmed yet :(");
                 break;
         }
-
 
         Invoke("Reset", 3);
     }
