@@ -16,6 +16,7 @@ public class FishingManager : MonoBehaviour
     public GameObject restSprite;
     public GameObject bouncingSprite;
 
+    public GameObject waitText;
 
     public GameObject presentationFlair;
     public GameObject catchPresentationObject;
@@ -48,6 +49,7 @@ public class FishingManager : MonoBehaviour
         bouncingSprite.SetActive(false);
 
         presentationFlair.SetActive(false);
+        waitText.SetActive(false);
         
         /*
         //generate the list of possible things to catch
@@ -168,6 +170,7 @@ public class FishingManager : MonoBehaviour
     IEnumerator Wait()
     {
         Debug.Log("Starting to wait...");
+        waitText.SetActive(true);
         isFishing = true;
         //wait for 2-10 seconds: adjust the timing if needed
         yield return new WaitForSeconds(Random.Range(2, 10));
@@ -177,6 +180,7 @@ public class FishingManager : MonoBehaviour
 
     void ReadyToCatch()
     {
+        waitText.SetActive(false);
         Debug.Log("something has bit onto the fishing rod..");
         hasCatch = true;
         currentCatch = possibleCatches[Random.Range(0, possibleCatches.Count - 1)];
