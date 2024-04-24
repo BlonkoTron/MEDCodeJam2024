@@ -58,10 +58,4 @@ public class Vibrator : MonoBehaviour
         return false;
 #endif
     }
-    /*
-    private int convertToMilliseconds = 1000;
-    Vibrator.Vibrate(currentCatch.catchInSeconds* convertToMilliseconds);  // This Needs to be tested
-    Debug.Log(currentCatch.catchInSeconds);
-    Vibrator.Cancel();
-    */
 }

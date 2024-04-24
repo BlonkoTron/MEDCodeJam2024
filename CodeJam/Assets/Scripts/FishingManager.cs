@@ -33,6 +33,8 @@ public class FishingManager : MonoBehaviour
 
     private float catchingTimer = 0f;
 
+    private int convertToMilliseconds = 1000;
+
     private Catch currentCatch;
 
     //this is just a stand in until the real inventory is added
@@ -155,7 +157,8 @@ public class FishingManager : MonoBehaviour
         
         currentCatch = possibleCatches[Random.Range(0, possibleCatches.Count - 1)];
         waitText.text = "trying to vibrate";
-        Vibrator.Vibrate(currentCatch.catchInSeconds);  // This Needs to be tested
+        Vibrator.Vibrate(currentCatch.catchInSeconds* convertToMilliseconds);  // This Needs to be tested
+        Debug.Log(currentCatch.catchInSeconds);
 
         //instead of this, replace the "resting" fishing bob with the bouncing one
         //to indicate something having bitten
@@ -169,6 +172,7 @@ public class FishingManager : MonoBehaviour
 
     private void TryCatch()
     {
+        Vibrator.Cancel();
         waitText.text = "trying to catch";
         if (isCatchable)
         {
