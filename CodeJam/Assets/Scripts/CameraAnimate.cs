@@ -8,6 +8,7 @@ public class CameraAnimate : MonoBehaviour
     public float moveTimer;
     public Transform catchPositionTransform;
     private Vector3 catchPosition;
+    [SerializeField] private AudioClip throwSound;
 
     private Vector3 startPosition;
     // Start is called before the first frame update
@@ -20,10 +21,20 @@ public class CameraAnimate : MonoBehaviour
     public void MoveToCatch()
     {
         StartCoroutine(MoveCam(moveTimer, transform.position, catchPosition));
+        AudioManager.PlaySound(throwSound);
     }
     public void MoveToStart()
     {
         StartCoroutine(MoveCam(moveTimer, transform.position, startPosition));
+    }
+    public void PullBack(float pullAmount)
+    {
+        var pull = transform.position.y - pullAmount;
+        if (pull<startPosition.y)
+        {
+            pull = startPosition.y;
+        }
+        MoveToPosition(new Vector3(0, pull, 0));
     }
     public void MoveToPosition(Vector3 newPos)
     {
