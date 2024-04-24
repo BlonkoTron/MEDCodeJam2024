@@ -7,6 +7,10 @@ public class Tester : MonoBehaviour
     {
         Vibrator.Vibrate(1000, 200); // Vibrate for 1 second with an amplitude of 200
     }
+    public void BeginvibrationNoAMP()
+    {
+        Vibrator.Vibrate(1000); // Vibrate for 1 second with the default amplitude
+    }
     public void Beginvibration255()
     {
         Vibrator.Vibrate(1000, 255); // Vibrate for 1 second with the strongest amplitude

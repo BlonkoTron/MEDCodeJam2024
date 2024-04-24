@@ -26,9 +26,22 @@ public class Vibrator : MonoBehaviour
         }
         else
         {
+            Handheld.Vibrate(); 
+        }
+    }
+    public static void Vibrate(long milliseconds = 250) // Vibrate for a given number of milliseconds
+    {
+        if (isAndroid())
+        {
+            vibrator.Call("vibrate", milliseconds);
+        }
+        else
+        {
             Handheld.Vibrate();
         }
     }
+
+
     public static void Cancel() // Cancels the vibration
     {
         if (isAndroid())
