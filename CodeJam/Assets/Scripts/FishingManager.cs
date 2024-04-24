@@ -149,7 +149,7 @@ public class FishingManager : MonoBehaviour
         Debug.Log("something has bit onto the fishing rod..");
         hasCatch = true;
         currentCatch = possibleCatches[Random.Range(0, possibleCatches.Length - 1)];
-        Vibrator.Vibrate(currentCatch.catchInSeconds, 255);
+        Vibrator.Vibrate(currentCatch.catchInSeconds, 255);  // This Needs to be tested
 
         //instead of this, replace the "resting" fishing bob with the bouncing one
         //to indicate something having bitten
