@@ -6,7 +6,7 @@ public class AudioManager : MonoBehaviour
 {
 
     public static AudioManager instance;
-    private AudioSource soundPlayer;
+    private static AudioSource soundPlayer;
 
     // Start is called before the first frame update
     void Awake()
@@ -24,7 +24,7 @@ public class AudioManager : MonoBehaviour
     {
         soundPlayer = GetComponentInChildren<AudioSource>();
     }
-    public void PlaySound(AudioClip clip)
+    public static void PlaySound(AudioClip clip)
     {
         soundPlayer.PlayOneShot(clip);
     }
