@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MarkTest.unity
-    guid: 1200552ec3e3d4e43bf9e1c763699c00
+    path: Assets/Scenes/FishingTest.unity
+    guid: 69dbf2e034b6a43f5abfdfc95807b463
   m_configObjects: {}
