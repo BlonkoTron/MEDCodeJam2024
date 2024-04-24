@@ -223,7 +223,12 @@ public class FishingManager : MonoBehaviour
             DisplayCatch(currentCatch);
         }
         else
+        {
             Debug.Log("Nothing to catch yet :)");
+            waitText.text = "No catch or not catchable :)";
+        }
+            
+
     }
 
     public void DisplayCatch(Catch type)
