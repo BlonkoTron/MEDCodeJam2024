@@ -27,6 +27,15 @@ public class CameraAnimate : MonoBehaviour
     {
         StartCoroutine(MoveCam(moveTimer, transform.position, startPosition));
     }
+    public void PullBack(float pullAmount)
+    {
+        var pull = transform.position.y - pullAmount;
+        if (pull<startPosition.y)
+        {
+            pull = startPosition.y;
+        }
+        MoveToPosition(new Vector3(0, pull, 0));
+    }
     public void MoveToPosition(Vector3 newPos)
     {
         Vector3 movePos = new Vector3(newPos.x, newPos.y, transform.position.z);
