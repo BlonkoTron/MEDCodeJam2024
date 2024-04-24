@@ -65,6 +65,5 @@ public class CameraAnimate : MonoBehaviour
             transform.position = Vector3.LerpUnclamped(start, end, curvePercent);
             yield return null;
         }
-
     }
 }

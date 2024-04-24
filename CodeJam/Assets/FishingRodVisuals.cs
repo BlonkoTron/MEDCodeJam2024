@@ -5,8 +5,10 @@ using UnityEngine;
 public class FishingRodVisuals : MonoBehaviour
 {
     private Animator anim;
+    [SerializeField] private GameObject bobber;
     void Start()
     {
+        bobber.SetActive(false);
         anim = GetComponent<Animator>();
         ThrowRod.instance.OnUsingRod += ThrowingRod;
     }
@@ -14,6 +16,7 @@ public class FishingRodVisuals : MonoBehaviour
     private void ThrowingRod()
     {
         anim.SetTrigger("Throw");
+        bobber.SetActive(true);
     }
     private void OnDisable()
     {
