@@ -44,18 +44,4 @@ public class Vibrator : MonoBehaviour
         return false;
 #endif
     }
-    /* When using Amp it dosent work in the build version ;(
-public static void Vibrate(long milliseconds = 250, int amplitude = 255) // Vibrate for a given number of milliseconds with a given amplitude
-{
-    if (isAndroid())
-    {
-        vibrator.Call("vibrate", milliseconds, amplitude);
-        Debug.Log(Debug.isDebugBuild ? milliseconds.ToString() : "");
-    }
-    else
-    {
-        Handheld.Vibrate(); 
-    }
-}
-*/
 }
