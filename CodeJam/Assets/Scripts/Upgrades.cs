@@ -9,44 +9,50 @@ public class Upgrades : MonoBehaviour
     public int upgradeCostStrength; // Base cost for strength upgrades
     public int upgradeCostBait; // Base cost for upgrades
     public int money; // Player's current money
-    public int upgradeableStrength; // Flag to indicate if upgrades are available
-    public int upgradeableBait; // Flag to indicate if upgrades are available
+    public int upgradeableStrength; // Flag to indicate if upgrades are available (optional)
+    public int upgradeableBait; // Flag to indicate if upgrades are available (optional)
     public TMP_Text goldText; // Text object to display money (using Text with capital T)
     public TMP_Text baitCostText;
     public TMP_Text strengthCostText;
+    public TMP_Text fishCounterText;
     private int upgradeLevelStrength;
     private int upgradeLevelBait;
     public Button upgradeStrength; // Button to upgrade strength
     public Button upgradeBait; // Button to upgrade bait
+    public AudioClip upgradeSound;
+
     // Start is called before the first frame update
     void Start()
     {
+        GetComponent<AudioSource>().clip = upgradeSound; // Assuming there's an AudioSource component attached
         money = 10; // Starting money
-        goldText.text = "Gold: " + money.ToString();
+    }
+
+    void Update()
+    {
+        // Check if enough money and upgrades are available (optional)
+        bool canUpgradeStrength = money >= upgradeCostStrength || upgradeableStrength == 0; // Assuming non-nullable
+
+        bool canUpgradeBait = money >= upgradeCostBait || upgradeableBait == 0; // Assuming non-nullable
+
+        upgradeStrength.gameObject.SetActive(canUpgradeStrength);
+        upgradeBait.gameObject.SetActive(canUpgradeBait);
+
+        // Update cost text if cost changes during gameplay
         strengthCostText.text = "Cost: " + upgradeCostStrength.ToString();
         baitCostText.text = "Cost: " + upgradeCostBait.ToString();
+        goldText.text = "Gold: " + money.ToString();
+        fishCounterText.text = "Fish acquired: " /*+ fish.ToString()*/;
+        if (upgradeableStrength == 0)
+        {
+            strengthCostText.text = "Max";
+        }
+        if (upgradeableBait == 0)
+        {
+            baitCostText.text = "Max";
+        }
     }
-    void update()
-    {
-        // Check if upgrades are available
-        if (money >= upgradeCostStrength)
-        {
-            upgradeBait.gameObject.SetActive(true);
-        }
-        else
-        {
-            upgradeBait.gameObject.SetActive(false);
-        }
 
-        if (money >= upgradeCostBait)
-        {
-            upgradeStrength.gameObject.SetActive(true);
-        }
-        else
-        {
-            upgradeStrength.gameObject.SetActive(false);
-        }
-    }
     public void UpgradeStrength() // Renamed for clarity
     {
 
@@ -57,9 +63,9 @@ public class Upgrades : MonoBehaviour
             money -= upgradeCostStrength;  // Deduct cost from money
             upgradeCostStrength *= 2;     // Increase cost for next upgrade
             upgradeableStrength--;     // Reduce available upgrades (optional)
-            goldText.text = "Gold: " + money.ToString();
-            strengthCostText.text = "Cost: " + upgradeCostStrength.ToString();
             Debug.Log("Strength upgraded to level " + upgradeLevelStrength);
+            // Play upgrade sound using AudioSource
+            GetComponent<AudioSource>().Play(); // Assuming there's an AudioSource component attached
             return;
         }
         else
@@ -79,9 +85,9 @@ public class Upgrades : MonoBehaviour
             money -= upgradeCostBait; // Deduct cost from money
             upgradeCostBait *= 2;    // Increase cost for next upgrade
             upgradeableBait--;     // Reduce available upgrades (optional)
-            goldText.text = "Gold: " + money.ToString();
-            baitCostText.text = "Cost: " + upgradeCostBait.ToString();
             Debug.Log("Bait upgraded to level " + upgradeLevelBait);
+            // Play upgrade sound using AudioSource
+            GetComponent<AudioSource>().Play(); // Assuming there's an AudioSource component attached
             return;
         }
         else
@@ -92,3 +98,4 @@ public class Upgrades : MonoBehaviour
         }
     }
 }
+

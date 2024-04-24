@@ -27,15 +27,19 @@ public class FishingManager : MonoBehaviour
    
 
     private bool isFishing = false;
-    private bool hasCatch = false;
+    private bool isDisplaying = false;
     private bool isCatchable = false;
+    
 
     private float catchingTimer = 0f;
+
+    private int convertToMilliseconds = 1000;
 
     private Catch currentCatch;
 
     //this is just a stand in until the real inventory is added
     public List<Catch> inventory = new();
+
     public bool usingMouse = false;
 
     // Start is called before the first frame update
@@ -72,8 +76,9 @@ public class FishingManager : MonoBehaviour
         }
         for (int i = possibleFishes; i >= 0; i--)
         {
-            possibleCatches.Add(new Boot());
+            possibleCatches.Add(new Fish());
         }
+
         waitText = FindObjectOfType<Text>();
         waitText.text = "Started the system, ready to fish...";
     }
@@ -88,71 +93,34 @@ public class FishingManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (hasCatch && isCatchable)
+        if (isCatchable)
         {
             catchingTimer += Time.deltaTime;
 
-            if (catchingTimer >= currentCatch.catchInSeconds)
+            if (catchingTimer >= currentCatch.catchInSeconds && !isDisplaying)
             {
                 Debug.Log("Took too long! The fish escaped!");
                 Reset();
             }
         }
-        
 
         if (usingMouse)
         {
-
             if (Input.GetMouseButtonDown(0)) //replace this with whatever initiates the fishing sequence
                                              //(i.e. when the bob is out on the water waiting for fish)
             {
-                /* old stuff
-                if (!isFishing)
-                {
-                    //Deploy the fishing bob in restful animation
-                    restSprite.SetActive(true);
-                    restSprite.GetComponent<SpriteRenderer>().color = Color.white;
-
-                    Debug.Log("Fishing initiated");
-                    StartCoroutine(Wait());
-                }
-                */
                 StartFishing();
             }
-
-            /*
-            if (hasCatch && isCatchable)
-            {
-                //replace the Mouse control with touch
-                if (Input.GetMouseButtonDown(0))
-                {
-                    // this is just a stand -in; connect this to D's code and update the inventory
-                    inventory.Add(currentCatch);
-
-                    Debug.Log($"<b>Caught a {currentCatch.name}!</b>");
-
-                    //then triumphantly display the catch and return to the
-                    //"not actively fishing" screen (before the fishing rod is cast out)
-
-                    Reset();
-                }
-                else
-                {
-                    catchingTimer += Time.deltaTime;
-                }
-
-                if (catchingTimer >= currentCatch.catchInSeconds)
-                {
-                    Debug.Log("Took too long! The fish escaped!");
-                    Reset();
-                }
-            }
-            */
 
             if (Input.GetMouseButtonDown(1))
             {
                 TryCatch();
             }
+        }
+
+        if (isDisplaying && Input.GetMouseButtonDown(0))
+        {
+            Reset();
         }
 
     }
@@ -181,19 +149,22 @@ public class FishingManager : MonoBehaviour
         isFishing = true;
         //wait for 2-10 seconds: adjust the timing if needed
         yield return new WaitForSeconds(Random.Range(2, 10));
+
         Debug.Log("Something caught :)");
         waitText.text = "Something caught!";
         ReadyToCatch();
+        yield break;
     }
 
     void ReadyToCatch()
     {
         waitText.text = "Ready to catch";
         Debug.Log("something has bit onto the fishing rod..");
-        hasCatch = true;
+        
         currentCatch = possibleCatches[Random.Range(0, possibleCatches.Count - 1)];
         waitText.text = "trying to vibrate";
-        Vibrator.Vibrate(currentCatch.catchInSeconds);  // This Needs to be tested
+        Vibrator.Vibrate(currentCatch.catchInSeconds* convertToMilliseconds);  // This Needs to be tested
+        //Debug.Log(currentCatch.catchInSeconds);
 
         //instead of this, replace the "resting" fishing bob with the bouncing one
         //to indicate something having bitten
@@ -207,12 +178,12 @@ public class FishingManager : MonoBehaviour
 
     private void TryCatch()
     {
+        Vibrator.Cancel();
         waitText.text = "trying to catch";
-        if (hasCatch && isCatchable)
+        if (isCatchable)
         {
             // this is just a stand-in; connect this to D's code and update the inventory
             inventory.Add(currentCatch);
-
 
             waitText.text = "Success!";
             Debug.Log($"Caught a {currentCatch.name}!");
@@ -226,6 +197,7 @@ public class FishingManager : MonoBehaviour
         {
             Debug.Log("Nothing to catch yet :)");
             waitText.text = "No catch or not catchable :)";
+            Reset();
         }
             
 
@@ -234,6 +206,8 @@ public class FishingManager : MonoBehaviour
     public void DisplayCatch(Catch type)
     {
         waitText.text = "trying to display";
+        isDisplaying = true;
+
         //remove the fishing bob
         bouncingSprite.SetActive(false);
 
@@ -252,8 +226,6 @@ public class FishingManager : MonoBehaviour
                 break;
         }
 
-
-        Invoke("Reset", 3);
     }
 
     private void Reset()
@@ -263,9 +235,14 @@ public class FishingManager : MonoBehaviour
         presentationFlair.SetActive(false);
         Destroy(catchPresentationObject);
         isFishing = false;
-        hasCatch = false;
+        isDisplaying = false;
+        
         isCatchable = false;
         catchingTimer = 0f;
+
+        restSprite.SetActive(false);
+        bouncingSprite.SetActive(false);
+        StopAllCoroutines();
 
         waitText.text = "Reset.";
         Debug.Log("Fishing has reset.");
