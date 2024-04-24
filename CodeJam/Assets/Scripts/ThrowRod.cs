@@ -52,6 +52,8 @@ void Update()
         ignoreInputUntil = Time.time + ignoreInputDuration; // Set the time until which to ignore input
     }
 }
+
+
 IEnumerator WaitAndMove()
 {
     // Wait for a random amount of time between 1 and 20 seconds before starting the time slot
