@@ -16,6 +16,7 @@ public class Vibrator : MonoBehaviour
     public static AndroidJavaObject currentActivity;
     public static AndroidJavaObject vibrator;
 #endif
+
     public static void Vibrate(long milliseconds = 250, int amplitude = 255) // Vibrate for a given number of milliseconds with a given amplitude
     {
         if (isAndroid())

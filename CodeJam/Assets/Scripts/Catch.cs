@@ -8,14 +8,9 @@ public abstract class Catch
     
     public string name;
     public int score;
-    public int difficulty;
-    //private GameObject self;
 
     public int catchInSeconds;
 
-    private void Initialise()
-    {
-        
+    public Sprite sprite;
 
-    }
 }
