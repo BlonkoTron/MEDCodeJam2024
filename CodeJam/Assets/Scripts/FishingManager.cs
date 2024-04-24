@@ -75,7 +75,7 @@ public class FishingManager : MonoBehaviour
         }
         for (int i = possibleFishes; i >= 0; i--)
         {
-            possibleCatches.Add(new Boot());
+            possibleCatches.Add(new Fish());
         }
 
         foreach (Catch i in possibleCatches)
