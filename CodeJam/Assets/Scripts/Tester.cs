@@ -3,13 +3,14 @@ using UnityEngine.UI;
 
 public class Tester : MonoBehaviour
 {
-    public void Beginvibration200()
-    {
-        Vibrator.Vibrate(1000, 200); // Vibrate for 1 second with an amplitude of 200
-    }
     public void BeginvibrationNoAMP()
     {
         Vibrator.Vibrate(1000); // Vibrate for 1 second with the default amplitude
+    }
+    /*
+    public void Beginvibration200()
+    {
+        Vibrator.Vibrate(1000, 200); // Vibrate for 1 second with an amplitude of 200
     }
     public void Beginvibration255()
     {
@@ -31,4 +32,5 @@ public class Tester : MonoBehaviour
     {
         Vibrator.Vibrate(1000, 150); // Vibrate for 1 second with a medium amplitude
     }
+    */
 }

@@ -193,7 +193,7 @@ public class FishingManager : MonoBehaviour
         hasCatch = true;
         currentCatch = possibleCatches[Random.Range(0, possibleCatches.Count - 1)];
         waitText.text = "trying to vibrate";
-        Vibrator.Vibrate(currentCatch.catchInSeconds, 255);  // This Needs to be tested
+        Vibrator.Vibrate(currentCatch.catchInSeconds);  // This Needs to be tested
 
         //instead of this, replace the "resting" fishing bob with the bouncing one
         //to indicate something having bitten
