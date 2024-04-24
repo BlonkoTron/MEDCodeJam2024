@@ -192,11 +192,13 @@ public class FishingManager : MonoBehaviour
         Debug.Log("something has bit onto the fishing rod..");
         hasCatch = true;
         currentCatch = possibleCatches[Random.Range(0, possibleCatches.Count - 1)];
+        waitText.text = "trying to vibrate";
         Vibrator.Vibrate(currentCatch.catchInSeconds, 255);  // This Needs to be tested
 
         //instead of this, replace the "resting" fishing bob with the bouncing one
         //to indicate something having bitten
         //restSprite.GetComponent<SpriteRenderer>().color = Color.red;
+        waitText.text = "trying to change sprites";
         restSprite.SetActive(false);
         bouncingSprite.SetActive(true);
 
@@ -205,11 +207,14 @@ public class FishingManager : MonoBehaviour
 
     private void TryCatch()
     {
+        waitText.text = "trying to catch";
         if (hasCatch && isCatchable)
         {
             // this is just a stand-in; connect this to D's code and update the inventory
             inventory.Add(currentCatch);
 
+
+            waitText.text = "Success!";
             Debug.Log($"Caught a {currentCatch.name}!");
 
             //then triumphantly display the catch and return to the
@@ -223,6 +228,7 @@ public class FishingManager : MonoBehaviour
 
     public void DisplayCatch(Catch type)
     {
+        waitText.text = "trying to display";
         //remove the fishing bob
         bouncingSprite.SetActive(false);
 
@@ -247,6 +253,7 @@ public class FishingManager : MonoBehaviour
 
     private void Reset()
     {
+        waitText.text = "Resetting...";
         Debug.Log("Resetting...");
         presentationFlair.SetActive(false);
         Destroy(catchPresentationObject);
@@ -255,7 +262,7 @@ public class FishingManager : MonoBehaviour
         isCatchable = false;
         catchingTimer = 0f;
 
-        
+        waitText.text = "Reset.";
         Debug.Log("Fishing has reset.");
 
     }
