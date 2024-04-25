@@ -1575,10 +1575,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4203336242617220038, guid: 8a29b4773c3b0c349aabd7981d79043c, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 4302671598349325054, guid: 8a29b4773c3b0c349aabd7981d79043c, type: 3}
+      propertyPath: fishManager
+      value: 
+      objectReference: {fileID: 207744034}
     - target: {fileID: 4977443741603182256, guid: 8a29b4773c3b0c349aabd7981d79043c, type: 3}
       propertyPath: m_Name
       value: FishingRod

@@ -351,6 +351,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bobber: {fileID: 243617277546769980}
+  watersplash: {fileID: 678418244790393404}
   moveCurve:
     serializedVersion: 2
     m_Curve:
@@ -375,3 +376,4 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  fishManager: {fileID: 0}
