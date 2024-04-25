@@ -6,18 +6,18 @@ using TMPro; // Assuming you're using TextMesh Pro
 
 public class Upgrades : MonoBehaviour
 {
-    public int upgradeCostStrength; // Base cost for strength upgrades
+    //public int upgradeCostStrength; // Base cost for strength upgrades
     public int upgradeCostBait; // Base cost for upgrades
     public int money; // Player's current money
-    public int upgradeableStrength; // Flag to indicate if upgrades are available (optional)
+    //public int upgradeableStrength; // Flag to indicate if upgrades are available (optional)
     public int upgradeableBait; // Flag to indicate if upgrades are available (optional)
     public TMP_Text goldText; // Text object to display money (using Text with capital T)
     public TMP_Text baitCostText;
-    public TMP_Text strengthCostText;
+    //public TMP_Text strengthCostText;
     public TMP_Text fishCounterText;
-    private int upgradeLevelStrength;
+    //private int upgradeLevelStrength;
     private int upgradeLevelBait;
-    public Button upgradeStrength; // Button to upgrade strength
+    //public Button upgradeStrength; // Button to upgrade strength
     public Button upgradeBait; // Button to upgrade bait
     public AudioClip upgradeSound;
 
@@ -30,29 +30,29 @@ public class Upgrades : MonoBehaviour
     void Update()
     {
         // Check if enough money and upgrades are available (optional)
-        bool canUpgradeStrength = money >= upgradeCostStrength || upgradeableStrength == 0; // Assuming non-nullable
+        //bool canUpgradeStrength = money >= upgradeCostStrength || upgradeableStrength == 0; // Assuming non-nullable
 
         bool canUpgradeBait = money >= upgradeCostBait || upgradeableBait == 0; // Assuming non-nullable
 
-        upgradeStrength.gameObject.SetActive(canUpgradeStrength);
+        //upgradeStrength.gameObject.SetActive(canUpgradeStrength);
         upgradeBait.gameObject.SetActive(canUpgradeBait);
 
         // Update cost text if cost changes during gameplay
-        strengthCostText.text = "Cost: " + upgradeCostStrength.ToString();
+        //strengthCostText.text = "Cost: " + upgradeCostStrength.ToString();
         baitCostText.text = "Cost: " + upgradeCostBait.ToString();
         goldText.text = "Gold: " + money.ToString();
         fishCounterText.text = "Fish acquired: " /*+ fish.ToString()*/;
-        if (upgradeableStrength == 0)
+        /*if (upgradeableStrength == 0)
         {
             strengthCostText.text = "Max";
-        }
+        }*/
         if (upgradeableBait == 0)
         {
             baitCostText.text = "Max";
         }
     }
 
-    public void UpgradeStrength() // Renamed for clarity
+    /*public void UpgradeStrength() // Renamed for clarity
     {
 
         // Check if enough money and upgrade is available
@@ -73,7 +73,7 @@ public class Upgrades : MonoBehaviour
             Debug.Log("Not enough money or no more upgrades");
             return;
         }
-    }
+    }*/
 
     public void UpgradeBait() // Renamed for clarity
     {
