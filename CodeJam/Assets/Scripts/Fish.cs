@@ -7,7 +7,7 @@ public class Fish : Catch
     public Fish()
     {
         type = FishType.normal;
-        gold = 10;
+        gold = 5;
         catchInSeconds = 3;
     }
 }

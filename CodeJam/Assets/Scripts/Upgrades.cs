@@ -8,17 +8,23 @@ public class Upgrades : MonoBehaviour
 {
     //public int upgradeCostStrength; // Base cost for strength upgrades
     public int upgradeCostBait; // Base cost for upgrades
-    public int money; // Player's current money
+    public static int money; // Player's current money
     //public int upgradeableStrength; // Flag to indicate if upgrades are available (optional)
     public int upgradeableBait; // Flag to indicate if upgrades are available (optional)
     public TMP_Text goldText; // Text object to display money (using Text with capital T)
     public TMP_Text baitCostText;
+
+    public GameObject UICanvas;
+
     //public TMP_Text strengthCostText;
     //private int upgradeLevelStrength;
     private int upgradeLevelBait;
     //public Button upgradeStrength; // Button to upgrade strength
     public Button upgradeBait; // Button to upgrade bait
     public AudioClip upgradeSound;
+
+    [HideInInspector]
+    public static bool doDisplayUI = true;
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +40,22 @@ public class Upgrades : MonoBehaviour
         bool canUpgradeBait = money >= upgradeCostBait || upgradeableBait == 0; // Assuming non-nullable
 
         //upgradeStrength.gameObject.SetActive(canUpgradeStrength);
-        upgradeBait.gameObject.SetActive(canUpgradeBait);
+        if (doDisplayUI)
+        {
+            UICanvas.SetActive(true);
+            if (canUpgradeBait)
+            {
+                upgradeBait.gameObject.SetActive(true);
+            }
+            else
+            {
+                upgradeBait.gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            UICanvas.SetActive(false);
+        }
 
         // Update cost text if cost changes during gameplay
         //strengthCostText.text = "Cost: " + upgradeCostStrength.ToString();
@@ -49,6 +70,8 @@ public class Upgrades : MonoBehaviour
         {
             baitCostText.text = "Max";
         }
+
+        
     }
 
     /*public void UpgradeStrength() // Renamed for clarity

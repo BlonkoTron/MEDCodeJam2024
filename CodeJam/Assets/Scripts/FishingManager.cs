@@ -113,6 +113,15 @@ public class FishingManager : MonoBehaviour
             Reset();
         }
 
+        if (isFishing)
+        {
+            Upgrades.doDisplayUI = false;
+        }
+        else
+        {
+            Upgrades.doDisplayUI = true;
+        }
+
     }
 
     void StartFishing()
@@ -181,6 +190,7 @@ public class FishingManager : MonoBehaviour
             //then triumphantly display the catch and return to the
             //"not actively fishing" screen (before the fishing rod is cast out)
             fishCounter++;
+            Upgrades.money += currentCatch.gold;
             fishCounterText.text = "Fish acquired: " + fishCounter.ToString();
             DisplayCatch(currentCatch);
         }
