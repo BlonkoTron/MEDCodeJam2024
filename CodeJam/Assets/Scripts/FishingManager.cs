@@ -140,7 +140,6 @@ public class FishingManager : MonoBehaviour
 
     void StartFishing()
     {
-        Destroy(catchPresentationObject);
         if (!isFishing)
         {
 
