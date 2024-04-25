@@ -140,6 +140,7 @@ public class FishingManager : MonoBehaviour
 
     void StartFishing()
     {
+        Reset();
         if (!isFishing)
         {
 
