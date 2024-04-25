@@ -61,7 +61,7 @@ public class FishingManager : MonoBehaviour
     private Catch currentCatch;
 
     //this is just a stand in until the real inventory is added
-    public List<Catch> inventory = new();
+    //public List<Catch> inventory = new();
 
     public bool usingTestControls = false;
 
@@ -205,7 +205,7 @@ public class FishingManager : MonoBehaviour
         if (isCatchable)
         {
             // this is just a stand-in; connect this to D's code and update the inventory
-            inventory.Add(currentCatch);
+            Inventory.instance.AddFish(currentCatch.type);
 
             //waitText.text = "Success!";
             Debug.Log($"Caught a {currentCatch.type}!");
