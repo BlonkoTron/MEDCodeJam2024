@@ -25,7 +25,6 @@ public class Upgrades : MonoBehaviour
     void Start()
     {
         GetComponent<AudioSource>().clip = upgradeSound; // Assuming there's an AudioSource component attached
-        money = 10; // Starting money
     }
 
     void Update()
