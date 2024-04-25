@@ -12,13 +12,14 @@ private bool isThrown = false;
 private float ignoreInputUntil = 0f;
 private float ignoreInputDuration = 1f; // Ignore input for 1 second
 
+private float ignoreInputInventory = 3f;
 public static ThrowRod instance;
 
 public delegate void UsingRod();
 
 public event UsingRod OnUsingRod;
 
-
+public GameObject inventory;
 public event UsingRod OnPullRod;
 
 void Awake()
@@ -50,6 +51,10 @@ void Update()
         OnPullRod?.Invoke();
         Debug.Log("Pulled in!");
         ignoreInputUntil = Time.time + ignoreInputDuration; // Set the time until which to ignore input
+    }
+    if (inventory = null)   // Check if the inventory is null
+    {
+        ignoreInputUntil = Time.time + ignoreInputDuration;
     }
 }
 
