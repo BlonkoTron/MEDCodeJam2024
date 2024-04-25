@@ -1439,14 +1439,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 243617277546769980, guid: 8a29b4773c3b0c349aabd7981d79043c, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 678418244790393404, guid: 8a29b4773c3b0c349aabd7981d79043c, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 4302671598349325054, guid: 8a29b4773c3b0c349aabd7981d79043c, type: 3}
       propertyPath: fishManager
       value: 
@@ -1454,10 +1446,6 @@ PrefabInstance:
     - target: {fileID: 4977443741603182256, guid: 8a29b4773c3b0c349aabd7981d79043c, type: 3}
       propertyPath: m_Name
       value: FishingRod
-      objectReference: {fileID: 0}
-    - target: {fileID: 4977443741603182256, guid: 8a29b4773c3b0c349aabd7981d79043c, type: 3}
-      propertyPath: m_Layer
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8885871348051473647, guid: 8a29b4773c3b0c349aabd7981d79043c, type: 3}
       propertyPath: m_LocalPosition.x
