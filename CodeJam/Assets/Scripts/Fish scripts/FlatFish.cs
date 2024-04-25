@@ -3,8 +3,8 @@ public class FlatFish : Catch
     public FlatFish()
     {
         type = FishType.flat;
-        gold = 5;
+        gold = 2;
         catchInSeconds = 3;
-        possibleElements = 15;
+        possibleElements = 10;
     }
 }

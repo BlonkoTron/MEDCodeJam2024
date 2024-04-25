@@ -3,8 +3,8 @@ public class RainbowFish : Catch
     public RainbowFish()
     {
         type = FishType.rainbow;
-        gold = 5;
+        gold = 2;
         catchInSeconds = 3;
-        possibleElements = 15;
+        possibleElements = 10;
     }
 }

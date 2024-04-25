@@ -8,6 +8,11 @@ public class OpenInventory : MonoBehaviour
     public GameObject inventoryButton;
     public GameObject FishingRod;
 
+    private void Start()
+    {
+        ThrowRod.instance.OnUsingRod += CloseInventory;
+    }
+
     public void OpenCloseInventory()
     {
         inventoryPanel.SetActive(!inventoryPanel.activeSelf);
@@ -23,5 +28,14 @@ public class OpenInventory : MonoBehaviour
         {
           inventoryButton.SetActive(false);
         }
+    }
+    private void CloseInventory()
+    {
+        inventoryPanel.SetActive(false);
+    }
+    private void OnDestroy()
+    {
+        ThrowRod.instance.OnUsingRod -= CloseInventory;
+
     }
 }

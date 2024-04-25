@@ -3,8 +3,8 @@ public class CatFish : Catch
     public CatFish()
     {
         type = FishType.cat;
-        gold = 5;
-        catchInSeconds = 3;
-        possibleElements = 15;
+        gold = 10;
+        catchInSeconds = 2;
+        possibleElements = 4;
     }
 }

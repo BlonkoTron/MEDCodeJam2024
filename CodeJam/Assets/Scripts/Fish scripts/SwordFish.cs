@@ -3,8 +3,8 @@ public class SwordFish : Catch
     public SwordFish()
     {
         type = FishType.sword;
-        gold = 5;
-        catchInSeconds = 3;
-        possibleElements = 15;
+        gold = 20;
+        catchInSeconds = 1;
+        possibleElements = 2;
     }
 }

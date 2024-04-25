@@ -2,9 +2,9 @@ public class PufferFish : Catch
 {
     public PufferFish()
     {
-        type = FishType.normal;
-        gold = 5;
-        catchInSeconds = 3;
-        possibleElements = 15;
+        type = FishType.puffer;
+        gold = 10;
+        catchInSeconds = 2;
+        possibleElements = 4;
     }
 }
