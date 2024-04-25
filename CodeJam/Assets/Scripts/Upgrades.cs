@@ -14,7 +14,6 @@ public class Upgrades : MonoBehaviour
     public TMP_Text goldText; // Text object to display money (using Text with capital T)
     public TMP_Text baitCostText;
     //public TMP_Text strengthCostText;
-    public TMP_Text fishCounterText;
     //private int upgradeLevelStrength;
     private int upgradeLevelBait;
     //public Button upgradeStrength; // Button to upgrade strength
@@ -41,7 +40,7 @@ public class Upgrades : MonoBehaviour
         //strengthCostText.text = "Cost: " + upgradeCostStrength.ToString();
         baitCostText.text = "Cost: " + upgradeCostBait.ToString();
         goldText.text = "Gold: " + money.ToString();
-        fishCounterText.text = "Fish acquired: " /*+ fish.ToString()*/;
+         /*+ fish.ToString()*/;
         /*if (upgradeableStrength == 0)
         {
             strengthCostText.text = "Max";

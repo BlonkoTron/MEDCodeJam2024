@@ -42,6 +42,8 @@ public class FishingManager : MonoBehaviour
 
     public bool usingMouse = false;
 
+    public TMP_Text fishCounterText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -176,7 +178,7 @@ public class FishingManager : MonoBehaviour
 
             //then triumphantly display the catch and return to the
             //"not actively fishing" screen (before the fishing rod is cast out)
-
+            fishCounterText.text = "Fish acquired: " + 0++;
             DisplayCatch(currentCatch);
         }
         else
