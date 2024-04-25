@@ -60,8 +60,25 @@ public class FishingManager : MonoBehaviour
 
     private Catch currentCatch;
 
+    public List<Catch> typesOfCatches = new List<Catch>
+    {
+        new BlobFish(),
+        new Boot(),
+        new CatFish(),
+        new ClownFish(),
+        new CrabFish(),
+        new DuckFish(),
+        new Fish(),
+        new FishAndChips(),
+        new FlatFish(),
+        new PufferFish(),
+        new RainbowFish(),
+        new ShrimpFish(),
+        new SwordFish()
+    };
+
     //this is just a stand in until the real inventory is added
-    public List<Catch> inventory = new();
+    //public List<Catch> inventory = new();
 
     public bool usingTestControls = false;
 
@@ -80,8 +97,22 @@ public class FishingManager : MonoBehaviour
         bouncingSprite.SetActive(false);
 
         presentationFlair.SetActive(false);
-        
 
+
+        foreach (Catch @catch in typesOfCatches)
+        {
+            for (int i = @catch.possibleElements; i>=0; i--)
+            {
+                possibleCatches.Add(@catch);
+            }   
+        }
+
+        //debug the list of possible things
+        foreach (Catch @catch in possibleCatches)
+        {
+            Debug.Log(@catch.type);
+        }
+        /*
         for (int i = possibleBoots; i>=0; i--)
         {
             possibleCatches.Add(new Boot());
@@ -90,7 +121,7 @@ public class FishingManager : MonoBehaviour
         {
             possibleCatches.Add(new Fish());
         }
-
+        */
         //waitText = FindObjectOfType<Text>();
         //waitText.text = "Started the system, ready to fish...";
     }
@@ -205,7 +236,7 @@ public class FishingManager : MonoBehaviour
         if (isCatchable)
         {
             // this is just a stand-in; connect this to D's code and update the inventory
-            inventory.Add(currentCatch);
+            Inventory.instance.AddFish(currentCatch.type);
 
             //waitText.text = "Success!";
             Debug.Log($"Caught a {currentCatch.type}!");

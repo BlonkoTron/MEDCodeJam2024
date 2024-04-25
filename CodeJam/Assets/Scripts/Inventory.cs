@@ -40,7 +40,7 @@ public class Inventory : MonoBehaviour
     }
 
     // Adds a fish to the inventory and updates the count and display
-    private void AddFish(FishType fishType)
+    public void AddFish(FishType fishType)
     {
         // Get the index corresponding to the fish type
         int index = (int)fishType;
