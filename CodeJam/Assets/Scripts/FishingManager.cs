@@ -26,6 +26,27 @@ public class FishingManager : MonoBehaviour
     public GameObject normalFishPrefab;
     public GameObject bootPrefab;
    
+    public GameObject shrimpPrefab;
+
+    public GameObject duckPrefab;
+
+    public GameObject clownFishPrefab;
+
+    public GameObject swordFishFishPrefab;
+
+    public GameObject blobFishPrefab;
+
+    public GameObject pufferFishPrefab;
+
+    public GameObject crabFishPrefab;
+
+    public GameObject fishAndChipsPrefab;
+
+    public GameObject catFishPrefab;
+
+    public GameObject flatFishPrefab;
+
+    public GameObject rainbowFishPrefab;
 
     private bool isFishing = false;
     public bool isDisplaying = false;
@@ -224,6 +245,40 @@ public class FishingManager : MonoBehaviour
             case FishType.boot:
                 catchPresentationObject = Instantiate(bootPrefab, Vector3.zero, Quaternion.identity);
                 break;
+            case FishType.shrimp:
+                catchPresentationObject = Instantiate(shrimpPrefab, Vector3.zero, Quaternion.identity);
+                break;
+            case FishType.duck:
+                catchPresentationObject = Instantiate(normalFishPrefab, Vector3.zero, Quaternion.identity);
+                break;
+            case FishType.clown:
+                catchPresentationObject = Instantiate(clownFishPrefab, Vector3.zero, Quaternion.identity);
+                break;
+            case FishType.sword:
+                catchPresentationObject = Instantiate(swordFishFishPrefab, Vector3.zero, Quaternion.identity);
+                break;
+            case FishType.blob:
+                catchPresentationObject = Instantiate(blobFishPrefab, Vector3.zero, Quaternion.identity);
+                break;
+            case FishType.puffer:
+                catchPresentationObject = Instantiate(pufferFishPrefab, Vector3.zero, Quaternion.identity);
+                break;
+            case FishType.crab:
+                catchPresentationObject = Instantiate(crabFishPrefab, Vector3.zero, Quaternion.identity);
+                break;
+            case FishType.chips:
+                catchPresentationObject = Instantiate(fishAndChipsPrefab, Vector3.zero, Quaternion.identity);
+                break;
+            case FishType.cat:
+                catchPresentationObject = Instantiate(catFishPrefab, Vector3.zero, Quaternion.identity);
+                break;
+            case FishType.flat:
+                catchPresentationObject = Instantiate(flatFishPrefab, Vector3.zero, Quaternion.identity);
+                break;
+            case FishType.rainbow:
+                catchPresentationObject = Instantiate(rainbowFishPrefab, Vector3.zero, Quaternion.identity);
+                break;
+
             default:
                 Debug.Log("you messed something up and fished something that we haven't programmed yet :(");
                 break;

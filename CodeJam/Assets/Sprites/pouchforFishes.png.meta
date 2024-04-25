@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8826d94c6c1b5c24890d62d2e1ec3f82
+guid: bf932ca602c42ff438034da17661e61b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -111,7 +111,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Inventory_0
+      name: pouchforFishes_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 216
-        width: 400
-        height: 534
+        x: 130
+        y: 115
+        width: 234
+        height: 230
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,41 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9910ae76c4c11e44d82487ef8a53bfab
-      internalID: 1993108144
+      spriteID: 110233d0628879a438ec5c7a184f384c
+      internalID: -1914183795
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Inventory_1
+      name: pouchforFishes_1
       rect:
         serializedVersion: 2
-        x: 400
-        y: 0
-        width: 400
-        height: 800
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 216, z: 0, w: 49}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bdebe6d249fd12f4794c27524e515c7b
-      internalID: 1902477148
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Inventory_2
-      rect:
-        serializedVersion: 2
-        x: 800
-        y: 215
-        width: 400
-        height: 537
+        x: 629
+        y: 116
+        width: 235
+        height: 229
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,8 +158,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4f80597e99bc73e4d9785891e9e1da0d
-      internalID: 1795825514
+      spriteID: 7d3fed90e8a919a40ac0dc662f8853fd
+      internalID: 256180735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pouchforFishes_2
+      rect:
+        serializedVersion: 2
+        x: 1129
+        y: 116
+        width: 230
+        height: 228
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d71e9b143723604abb40d2e3e135d15
+      internalID: 1553359676
       vertices: []
       indices: 
       edges: []
@@ -196,9 +196,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Inventory_0: 1993108144
-      Inventory_1: 1902477148
-      Inventory_2: 1795825514
+      pouchforFishes_0: -1914183795
+      pouchforFishes_1: 256180735
+      pouchforFishes_2: 1553359676
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
