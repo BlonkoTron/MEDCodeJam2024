@@ -38,12 +38,14 @@ public class Inventory : MonoBehaviour
             fishSprites.Add(fishSpritesObjects[i]);
         }
     }
-
+        
     // Adds a fish to the inventory and updates the count and display
     public void AddFish(FishType fishType)
     {
         // Get the index corresponding to the fish type
         int index = (int)fishType;
+        Debug.Log("Fish type index: " + index);
+        Debug.Log(fishCounts.Count);
 
         // Increment the count for the specified fish type
         fishCounts[index]++;
