@@ -18,32 +18,20 @@ public class FishingManager : MonoBehaviour
     public GameObject restSprite;
     public GameObject bouncingSprite;
 
-    public Text waitText;
+    //public Text waitText;
 
     public GameObject presentationFlair;
-
-    [HideInInspector]
     public GameObject catchPresentationObject;
 
     public GameObject normalFishPrefab;
     public GameObject bootPrefab;
-    public GameObject shrimpPrefab;
-    public GameObject duckPrefab;
-    public GameObject clownPrefab;
-    public GameObject swordPrefab;
-    public GameObject blobPrefab;
-    public GameObject pufferPrefab;
-    public GameObject crabPrefab;
-    public GameObject chipsPrefab;
-    public GameObject catPrefab;
-    public GameObject flatPrefab;
-    public GameObject rainbowPrefab;
-
+   
 
     private bool isFishing = false;
     public bool isDisplaying = false;
     private bool isCatchable = false;
-    
+
+    public float maxCatchTime=10;
 
     private float catchingTimer = 0f;
 
@@ -82,8 +70,8 @@ public class FishingManager : MonoBehaviour
             possibleCatches.Add(new Fish());
         }
 
-        waitText = FindObjectOfType<Text>();
-        waitText.text = "Started the system, ready to fish...";
+        //waitText = FindObjectOfType<Text>();
+        //waitText.text = "Started the system, ready to fish...";
     }
 
     //unsubscribe from events to prevent memory mess
@@ -139,7 +127,7 @@ public class FishingManager : MonoBehaviour
 
     void StartFishing()
     {
-        waitText.text = "Starting fishing...";
+        //waitText.text = "Starting fishing...";
         if (!isFishing)
         {
             //Deploy the fishing bob in restful animation
@@ -147,41 +135,42 @@ public class FishingManager : MonoBehaviour
             //restSprite.GetComponent<SpriteRenderer>().color = Color.white;
 
             Debug.Log("Fishing initiated");
-            waitText.text = "Fishing initiated, trying Coroutine...";
+            //waitText.text = "Fishing initiated, trying Coroutine...";
             StartCoroutine(Wait());
         }
-        else
-            waitText.text = "Already fishing.";
+        else {
+            //waitText.text = "Already fishing.";
+        }
     }
 
     IEnumerator Wait()
     {
         Debug.Log("Starting to wait...");
-        waitText.text = "Starting to wait...";
+        //waitText.text = "Starting to wait...";
         isFishing = true;
         //wait for 2-10 seconds: adjust the timing if needed
-        yield return new WaitForSeconds(Random.Range(2, 10));
+        yield return new WaitForSeconds(Random.Range(2, maxCatchTime));
 
         Debug.Log("Something caught :)");
-        waitText.text = "Something caught!";
+        //waitText.text = "Something caught!";
         ReadyToCatch();
         yield break;
     }
 
     void ReadyToCatch()
     {
-        waitText.text = "Ready to catch";
+        //waitText.text = "Ready to catch";
         Debug.Log("something has bit onto the fishing rod..");
         
         currentCatch = possibleCatches[Random.Range(0, possibleCatches.Count - 1)];
-        waitText.text = "trying to vibrate";
+        //waitText.text = "trying to vibrate";
         Vibrator.Vibrate(currentCatch.catchInSeconds* convertToMilliseconds);  // This Needs to be tested
         //Debug.Log(currentCatch.catchInSeconds);
 
         //instead of this, replace the "resting" fishing bob with the bouncing one
         //to indicate something having bitten
         //restSprite.GetComponent<SpriteRenderer>().color = Color.red;
-        waitText.text = "trying to change sprites";
+        //waitText.text = "trying to change sprites";
         restSprite.SetActive(false);
         bouncingSprite.SetActive(true);
 
@@ -191,13 +180,13 @@ public class FishingManager : MonoBehaviour
     private void TryCatch()
     {
         Vibrator.Cancel();
-        waitText.text = "trying to catch";
+        //waitText.text = "trying to catch";
         if (isCatchable)
         {
             // this is just a stand-in; connect this to D's code and update the inventory
             inventory.Add(currentCatch);
 
-            waitText.text = "Success!";
+            //waitText.text = "Success!";
             Debug.Log($"Caught a {currentCatch.type}!");
 
             //then triumphantly display the catch and return to the
@@ -210,7 +199,7 @@ public class FishingManager : MonoBehaviour
         else
         {
             Debug.Log("Nothing to catch yet :)");
-            waitText.text = "No catch or not catchable :)";
+            //waitText.text = "No catch or not catchable :)";
             Reset();
         }
             
@@ -219,7 +208,7 @@ public class FishingManager : MonoBehaviour
 
     public void DisplayCatch(Catch type)
     {
-        waitText.text = "trying to display";
+        //waitText.text = "trying to display";
         isDisplaying = true;
 
         //remove the fishing bob
@@ -235,39 +224,6 @@ public class FishingManager : MonoBehaviour
             case FishType.boot:
                 catchPresentationObject = Instantiate(bootPrefab, Vector3.zero, Quaternion.identity);
                 break;
-            case FishType.shrimp:
-                catchPresentationObject = Instantiate(shrimpPrefab, Vector3.zero, Quaternion.identity);
-                break;
-            case FishType.duck:
-                catchPresentationObject = Instantiate(duckPrefab, Vector3.zero, Quaternion.identity);
-                break;
-            case FishType.clown:
-                catchPresentationObject = Instantiate(clownPrefab, Vector3.zero, Quaternion.identity);
-                break;
-            case FishType.sword:
-                catchPresentationObject = Instantiate(swordPrefab, Vector3.zero, Quaternion.identity);
-                break;
-            case FishType.blob:
-                catchPresentationObject = Instantiate(blobPrefab, Vector3.zero, Quaternion.identity);
-                break;
-            case FishType.puffer:
-                catchPresentationObject = Instantiate(pufferPrefab, Vector3.zero, Quaternion.identity);
-                break;
-            case FishType.crab:
-                catchPresentationObject = Instantiate(swordPrefab, Vector3.zero, Quaternion.identity);
-                break;
-            case FishType.chips:
-                catchPresentationObject = Instantiate(chipsPrefab, Vector3.zero, Quaternion.identity);
-                break;
-            case FishType.cat:
-                catchPresentationObject = Instantiate(catPrefab, Vector3.zero, Quaternion.identity);
-                break;
-            case FishType.flat:
-                catchPresentationObject = Instantiate(flatPrefab, Vector3.zero, Quaternion.identity);
-                break;
-            case FishType.rainbow:
-                catchPresentationObject = Instantiate(rainbowPrefab, Vector3.zero, Quaternion.identity);
-                break;
             default:
                 Debug.Log("you messed something up and fished something that we haven't programmed yet :(");
                 break;
@@ -277,7 +233,7 @@ public class FishingManager : MonoBehaviour
 
     private void Reset()
     {
-        waitText.text = "Resetting...";
+        //waitText.text = "Resetting...";
         Debug.Log("Resetting...");
         presentationFlair.SetActive(false);
         Destroy(catchPresentationObject);
@@ -291,7 +247,7 @@ public class FishingManager : MonoBehaviour
         bouncingSprite.SetActive(false);
         StopAllCoroutines();
 
-        waitText.text = "Reset.";
+        //waitText.text = "Reset.";
         Debug.Log("Fishing has reset.");
 
     }
