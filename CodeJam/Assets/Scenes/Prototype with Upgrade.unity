@@ -815,8 +815,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80022ec3385ee40dfaaa6e5f48cb62f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restSprite: {fileID: 35462649}
-  bouncingSprite: {fileID: 1600364466}
   presentationFlair: {fileID: 2099422171}
   catchPresentationObject: {fileID: 0}
   normalFishPrefab: {fileID: 8222649185754937745, guid: 301df99a92e6640aca4d88fc4f1dfdd9, type: 3}
@@ -832,6 +830,7 @@ MonoBehaviour:
   catFishPrefab: {fileID: 5291860055304696998, guid: 2934992aa335fa64ca8070532bd4c1b8, type: 3}
   flatFishPrefab: {fileID: 3634434647157671950, guid: 26bd94d342f880f44803819e652e71eb, type: 3}
   rainbowFishPrefab: {fileID: 1202255651196093171, guid: 5ccaab58654c31e4595f0b33fbfbc69c, type: 3}
+  vibrateSound: {fileID: 8300000, guid: 58180a862a394d2498a9c91461167679, type: 3}
   isDisplaying: 0
   maxCatchTime: 10
   usingTestControls: 1
