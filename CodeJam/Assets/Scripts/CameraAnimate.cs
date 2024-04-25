@@ -7,7 +7,7 @@ public class CameraAnimate : MonoBehaviour
     public AnimationCurve moveCurve;
     public float moveTimer;
     public Transform catchPositionTransform;
-    private Vector3 catchPosition;
+    public Vector3 catchPosition;
     [SerializeField] private AudioClip throwSound;
 
     private Vector3 startPosition;
