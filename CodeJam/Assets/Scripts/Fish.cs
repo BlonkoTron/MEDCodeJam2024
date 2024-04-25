@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class Fish : Catch
 {
     public Fish()
@@ -9,5 +5,6 @@ public class Fish : Catch
         type = FishType.normal;
         gold = 5;
         catchInSeconds = 3;
+        possibleElements = 15;
     }
 }

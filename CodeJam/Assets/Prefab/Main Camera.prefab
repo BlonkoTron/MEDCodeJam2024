@@ -132,7 +132,8 @@ MonoBehaviour:
     m_RotationOrder: 4
   moveTimer: 1.5
   catchPositionTransform: {fileID: 6988222389139463399}
-  throwSound: {fileID: 8300000, guid: 4c2e33aaf01e20a41bff8cf733fb2dd6, type: 3}
+  catchPosition: {x: 0, y: 0, z: 0}
+  throwSound: {fileID: 8300000, guid: 8923ef455272b7f448034d4ec0d1903b, type: 3}
 --- !u!1 &4337510555338266306
 GameObject:
   m_ObjectHideFlags: 0
