@@ -41,7 +41,7 @@ public class FishingManager : MonoBehaviour
     //this is just a stand in until the real inventory is added
     public List<Catch> inventory = new();
 
-    public bool usingMouse = false;
+    public bool usingTestControls = false;
 
     public TMP_Text fishCounterText;
     private int fishCounter = 0;
@@ -94,15 +94,15 @@ public class FishingManager : MonoBehaviour
             }
         }
 
-        if (usingMouse)
+        if (usingTestControls)
         {
-            if (Input.GetMouseButtonDown(0)) //replace this with whatever initiates the fishing sequence
+            if (Input.GetKeyDown(KeyCode.W)) //replace this with whatever initiates the fishing sequence
                                              //(i.e. when the bob is out on the water waiting for fish)
             {
                 StartFishing();
             }
 
-            if (Input.GetMouseButtonDown(1))
+            if (Input.GetKeyDown(KeyCode.S))
             {
                 TryCatch();
             }

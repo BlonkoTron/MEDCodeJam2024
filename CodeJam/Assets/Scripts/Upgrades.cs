@@ -6,11 +6,13 @@ using TMPro; // Assuming you're using TextMesh Pro
 
 public class Upgrades : MonoBehaviour
 {
-    public int upgradeCostBait; // Base cost for upgrades
+    public int upgradeCostBait = 3; // Base cost for upgrades
     public static int money; // Player's current money
-    public int upgradeableBait; // Flag to indicate if upgrades are available (optional)
+    public int upgradeableBait = 4; // Flag to indicate if upgrades are available (optional)
+
     public TMP_Text goldText; // Text object to display money (using Text with capital T)
     public TMP_Text baitCostText;
+    public TMP_Text fishingrodLevelText;
 
     public GameObject UICanvas;
 
@@ -21,10 +23,21 @@ public class Upgrades : MonoBehaviour
     [HideInInspector]
     public static bool doDisplayUI = true;
 
+    private List<string> levelNames = new List<string>
+    {
+        "SUPERSONIC",
+        "EPIIIC",
+        "Great",
+        "Better",
+        "Normal",
+    };
+
     // Start is called before the first frame update
     void Start()
     {
         GetComponent<AudioSource>().clip = upgradeSound; // Assuming there's an AudioSource component attached
+
+        upgradeBait.gameObject.SetActive(false);
     }
 
     void Update()
@@ -38,6 +51,7 @@ public class Upgrades : MonoBehaviour
             UICanvas.SetActive(true);
             if (canUpgradeBait)
             {
+                //Debug.Log("It thinks you can upgrade bait now");
                 upgradeBait.gameObject.SetActive(true);
             }
             else
@@ -53,6 +67,7 @@ public class Upgrades : MonoBehaviour
         // Update cost text if cost changes during gameplay
         baitCostText.text = "Cost: " + upgradeCostBait.ToString();
         goldText.text = "Gold: " + money.ToString();
+        fishingrodLevelText.text = $"Fishing rod level: {levelNames[upgradeableBait]}";
         if (upgradeableBait == 0)
         {
             baitCostText.text = "Max";
