@@ -324,7 +324,7 @@ MonoBehaviour:
   isDisplaying: 0
   maxCatchTime: 10
   usingTestControls: 0
-  fishCounterText: {fileID: 0}
+  fishCounterText: {fileID: 260026013}
 --- !u!4 &207744035
 Transform:
   m_ObjectHideFlags: 0
@@ -342,6 +342,17 @@ Transform:
   - {fileID: 533918902}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &260026013 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4880049323166246138, guid: 781568742bde11b4894dc9e0f9d9c553, type: 3}
+  m_PrefabInstance: {fileID: 869132223}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &340788972 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8529626939201453983, guid: 781568742bde11b4894dc9e0f9d9c553, type: 3}
@@ -616,6 +627,10 @@ PrefabInstance:
       propertyPath: UICanvas
       value: 
       objectReference: {fileID: 340788972}
+    - target: {fileID: 1180177856465047690, guid: 781568742bde11b4894dc9e0f9d9c553, type: 3}
+      propertyPath: fishingManager
+      value: 
+      objectReference: {fileID: 207744034}
     - target: {fileID: 1180177856465047690, guid: 781568742bde11b4894dc9e0f9d9c553, type: 3}
       propertyPath: fishingrodLevelText
       value: 
