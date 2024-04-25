@@ -8,7 +8,7 @@ public class CameraAnimate : MonoBehaviour
     public float moveTimer;
     public Transform catchPositionTransform;
     public Vector3 catchPosition;
-    [SerializeField] private AudioClip throwSound;
+    [SerializeField] private AudioClip throwSound,reelIn,hitwater;
 
     private Vector3 startPosition;
     // Start is called before the first frame update

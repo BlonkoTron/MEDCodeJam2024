@@ -377,3 +377,6 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   fishManager: {fileID: 0}
+  throwSound: {fileID: 8300000, guid: 8923ef455272b7f448034d4ec0d1903b, type: 3}
+  reelInSound: {fileID: 8300000, guid: d266f5a9b88dace409d41bbb45adfde5, type: 3}
+  hitwaterSound: {fileID: 8300000, guid: 7ef905cb82e705f488fc44bf43b2cf68, type: 3}

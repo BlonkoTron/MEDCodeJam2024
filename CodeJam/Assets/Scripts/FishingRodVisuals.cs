@@ -12,8 +12,7 @@ public class FishingRodVisuals : MonoBehaviour
     [SerializeField] private FishingManager fishManager;
     private CameraAnimate camAnim;
     private SpriteRenderer spr;
-
-    private delegate void DelayedMethod();
+    [SerializeField] private AudioClip throwSound, reelInSound, hitwaterSound;
 
     void Start()
     {
@@ -39,6 +38,7 @@ public class FishingRodVisuals : MonoBehaviour
     }
     private void ThrowingRod()
     {
+        AudioManager.PlaySound(throwSound);
         anim.SetTrigger("Throw");
         bobber.SetActive(true);
         StartCoroutine(Move(bobber.transform, camAnim.moveTimer, transform.position, camAnim.catchPosition));
@@ -46,6 +46,7 @@ public class FishingRodVisuals : MonoBehaviour
     }
     private void PullBack()
     {
+        AudioManager.PlaySound(reelInSound);
         bobber.GetComponent<Animator>().SetTrigger("bobberChange");
         watersplash.SetActive(false);
         StartCoroutine(Move(bobber.transform, camAnim.moveTimer, transform.position, bobberStartPos));
@@ -72,5 +73,6 @@ public class FishingRodVisuals : MonoBehaviour
         yield return new WaitForSeconds(time);
         bobber.GetComponent<Animator>().SetTrigger("bobberChange");
         watersplash.SetActive(true);
+        AudioManager.PlaySound(hitwaterSound);
     }
 }
