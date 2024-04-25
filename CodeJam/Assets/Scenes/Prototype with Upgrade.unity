@@ -241,7 +241,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 152.06, y: 35.96}
+  m_AnchoredPosition: {x: 152.06, y: 35.95999}
   m_SizeDelta: {x: 304.13, y: 71.92}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &136536530
@@ -657,12 +657,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restSprite: {fileID: 35462649}
   bouncingSprite: {fileID: 1600364466}
-  waitText: {fileID: 1605652665}
   presentationFlair: {fileID: 2099422171}
   catchPresentationObject: {fileID: 0}
   normalFishPrefab: {fileID: 8222649185754937745, guid: 301df99a92e6640aca4d88fc4f1dfdd9, type: 3}
   bootPrefab: {fileID: 937954810884200961, guid: 66b4b4599a205422fb842d9f42a0831a, type: 3}
   isDisplaying: 0
+  maxCatchTime: 10
   usingTestControls: 1
   fishCounterText: {fileID: 4880049321721229480}
 --- !u!4 &937433583
@@ -1144,6 +1144,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4302671598349325054, guid: 8a29b4773c3b0c349aabd7981d79043c, type: 3}
+      propertyPath: fishManager
+      value: 
+      objectReference: {fileID: 937433582}
     - target: {fileID: 4977443741603182256, guid: 8a29b4773c3b0c349aabd7981d79043c, type: 3}
       propertyPath: m_Name
       value: FishingRod
@@ -1761,6 +1765,7 @@ MonoBehaviour:
   UICanvas: {fileID: 749309563}
   upgradeBait: {fileID: 2877101694076260521}
   upgradeSound: {fileID: 8300000, guid: a72386bb6943ee7489fa654a9b8e6d17, type: 3}
+  fishingManager: {fileID: 937433582}
 --- !u!4 &2112174934
 Transform:
   m_ObjectHideFlags: 0
