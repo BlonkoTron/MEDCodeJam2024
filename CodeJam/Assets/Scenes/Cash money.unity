@@ -478,7 +478,6 @@ MonoBehaviour:
   upgradeableBait: 5
   goldText: {fileID: 395277496}
   baitCostText: {fileID: 1303895859}
-  fishCounterText: {fileID: 1338010228}
   upgradeBait: {fileID: 998849031}
   upgradeSound: {fileID: 8300000, guid: a72386bb6943ee7489fa654a9b8e6d17, type: 3}
 --- !u!82 &889215591
@@ -595,7 +594,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &998849030
 RectTransform:
   m_ObjectHideFlags: 0
