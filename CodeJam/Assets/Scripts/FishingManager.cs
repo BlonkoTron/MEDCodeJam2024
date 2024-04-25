@@ -28,7 +28,7 @@ public class FishingManager : MonoBehaviour
    
 
     private bool isFishing = false;
-    private bool isDisplaying = false;
+    public bool isDisplaying = false;
     private bool isCatchable = false;
     
 
