@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using TMPro;
 
 public class FishingManager : MonoBehaviour
 { 
@@ -43,6 +44,7 @@ public class FishingManager : MonoBehaviour
     public bool usingMouse = false;
 
     public TMP_Text fishCounterText;
+    private int fishCounter = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -178,7 +180,8 @@ public class FishingManager : MonoBehaviour
 
             //then triumphantly display the catch and return to the
             //"not actively fishing" screen (before the fishing rod is cast out)
-            fishCounterText.text = "Fish acquired: " + 0++;
+            fishCounter++;
+            fishCounterText.text = "Fish acquired: " + fishCounter.ToString();
             DisplayCatch(currentCatch);
         }
         else
