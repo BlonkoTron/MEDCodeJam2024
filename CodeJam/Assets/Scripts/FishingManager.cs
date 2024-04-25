@@ -239,7 +239,7 @@ public class FishingManager : MonoBehaviour
             // this is just a stand-in; connect this to D's code and update the inventory
 
             if (Inventory.instance == null)
-                Debug.LogWarning("thereøs no inventory instnce :(");
+                Debug.LogWarning("thereï¿½s no inventory instnce :(");
             else
                 Inventory.instance.AddFish(currentCatch.type);
 
@@ -285,7 +285,7 @@ public class FishingManager : MonoBehaviour
                 catchPresentationObject = Instantiate(shrimpPrefab, Vector3.zero, Quaternion.identity);
                 break;
             case FishType.duck:
-                catchPresentationObject = Instantiate(normalFishPrefab, Vector3.zero, Quaternion.identity);
+                catchPresentationObject = Instantiate(duckPrefab, Vector3.zero, Quaternion.identity);
                 break;
             case FishType.clown:
                 catchPresentationObject = Instantiate(clownFishPrefab, Vector3.zero, Quaternion.identity);
