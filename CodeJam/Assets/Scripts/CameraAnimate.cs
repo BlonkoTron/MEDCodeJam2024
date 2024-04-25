@@ -7,7 +7,7 @@ public class CameraAnimate : MonoBehaviour
     public AnimationCurve moveCurve;
     public float moveTimer;
     public Transform catchPositionTransform;
-    public Vector3 catchPosition;
+    [HideInInspector] public Vector3 catchPosition;
 
     private Vector3 startPosition;
     // Start is called before the first frame update

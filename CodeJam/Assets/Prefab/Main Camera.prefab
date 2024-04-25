@@ -121,11 +121,11 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: -0.33468738
-      outSlope: -0.33468738
+      inSlope: -0.051500794
+      outSlope: -0.051500794
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.10701102
+      inWeight: 0.10885608
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -158,7 +158,7 @@ Transform:
   m_GameObject: {fileID: 4337510555338266306}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 20.2, z: -10}
+  m_LocalPosition: {x: 0, y: 21.38, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
