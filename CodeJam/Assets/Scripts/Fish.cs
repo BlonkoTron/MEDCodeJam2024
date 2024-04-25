@@ -6,8 +6,8 @@ public class Fish : Catch
 {
     public Fish()
     {
-        name = "normal fish";
-        score = 10;
+        type = FishType.normal;
+        gold = 10;
         catchInSeconds = 3;
     }
 }

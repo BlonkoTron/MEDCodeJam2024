@@ -55,20 +55,6 @@ public class FishingManager : MonoBehaviour
 
         presentationFlair.SetActive(false);
         
-        
-        /*
-        //generate the list of possible things to catch
-        possibleCatches = new Catch[possibleFishes + possibleBoots];
-        for (int i = possibleCatches.Length-1; i>=0; i--)
-        {
-            if (possibleBoots > 0)
-                possibleCatches[i] = new Boot();
-            else
-            {
-                possibleCatches[i] = new Fish();
-            }
-        }
-        */
 
         for (int i = possibleBoots; i>=0; i--)
         {
@@ -186,7 +172,7 @@ public class FishingManager : MonoBehaviour
             inventory.Add(currentCatch);
 
             waitText.text = "Success!";
-            Debug.Log($"Caught a {currentCatch.name}!");
+            Debug.Log($"Caught a {currentCatch.type}!");
 
             //then triumphantly display the catch and return to the
             //"not actively fishing" screen (before the fishing rod is cast out)
@@ -213,12 +199,12 @@ public class FishingManager : MonoBehaviour
 
         //activate the triumphant display
         presentationFlair.SetActive(true);
-        switch (type.name)
+        switch (type.type)
         {
-            case "normal fish":
+            case FishType.normal:
                 catchPresentationObject = Instantiate(normalFishPrefab, Vector3.zero, Quaternion.identity);
                 break;
-            case "old rotting boot":
+            case FishType.boot:
                 catchPresentationObject = Instantiate(bootPrefab, Vector3.zero, Quaternion.identity);
                 break;
             default:
@@ -248,4 +234,21 @@ public class FishingManager : MonoBehaviour
         Debug.Log("Fishing has reset.");
 
     }
+}
+
+public enum FishType
+{
+    normal,
+    boot,
+    shrimp,
+    duck,
+    clown,
+    sword,
+    blob,
+    puffer,
+    crab,
+    chips,
+    cat,
+    flat,
+    rainbow
 }

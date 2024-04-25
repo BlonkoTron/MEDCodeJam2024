@@ -6,11 +6,9 @@ using UnityEngine.UI;
 public abstract class Catch 
 {
     
-    public string name;
-    public int score;
+    public FishType type;
+    public int gold;
 
     public int catchInSeconds;
-
-    public Sprite sprite;
 
 }

@@ -6,8 +6,8 @@ public class Boot : Catch
 {
     public Boot()
     {
-        name = "old rotting boot";
-        score = 0;
+        type = FishType.boot;
+        gold = 1;
         
         catchInSeconds = 4;
     }
