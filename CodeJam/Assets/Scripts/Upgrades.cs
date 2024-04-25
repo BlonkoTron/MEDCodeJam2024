@@ -24,13 +24,16 @@ public class Upgrades : MonoBehaviour
     public static bool doDisplayUI = true;
 
     private List<string> levelNames = new List<string>
-    {
-        "SUPERSONIC",
-        "EPIIIC",
-        "Great",
-        "Better",
-        "Normal",
-    };
+  {
+    "SUPERSONIC",
+    "EPIIIC",
+    "Great",
+    "Better",
+    "Normal",
+  };
+
+    // Reference to the FishingManager script
+    public FishingManager fishingManager;
 
     // Start is called before the first frame update
     void Start()
@@ -73,7 +76,6 @@ public class Upgrades : MonoBehaviour
             baitCostText.text = "Max";
         }
 
-        
     }
 
     public void UpgradeBait() // Renamed for clarity
@@ -83,10 +85,11 @@ public class Upgrades : MonoBehaviour
         {
             upgradeLevelBait++; // Increase bait level
             money -= upgradeCostBait; // Deduct cost from money
-            upgradeCostBait *= 2;    // Increase cost for next upgrade
-            upgradeableBait--;     // Reduce available upgrades (optional)
+            upgradeCostBait *= 2; // Increase cost for next upgrade
+            upgradeableBait--; // Reduce available upgrades (optional)
             Debug.Log("Bait upgraded to level " + upgradeLevelBait);
             // Play upgrade sound using AudioSource
+            fishingManager.maxCatchTime -= 2; // Decrease maxCatchTime by 2 seconds from FishingManager
             GetComponent<AudioSource>().Play(); // Assuming there's an AudioSource component attached
             return;
         }
@@ -98,4 +101,3 @@ public class Upgrades : MonoBehaviour
         }
     }
 }
-
