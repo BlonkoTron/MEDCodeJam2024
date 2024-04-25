@@ -4,7 +4,7 @@ public class CrabFish : Catch
     {
         type = FishType.crab;
         gold = 5;
-        catchInSeconds = 3;
-        possibleElements = 15;
+        catchInSeconds = 2;
+        possibleElements = 7;
     }
 }

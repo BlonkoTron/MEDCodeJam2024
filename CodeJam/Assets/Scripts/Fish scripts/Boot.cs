@@ -3,8 +3,8 @@ public class Boot : Catch
     public Boot()
     {
         type = FishType.boot;
-        gold = 1;
+        gold = 0;
         catchInSeconds = 4;
-        possibleElements = 5;
+        possibleElements = 8;
     }
 }

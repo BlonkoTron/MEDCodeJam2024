@@ -4,7 +4,7 @@ public class FishAndChips : Catch
     {
         type = FishType.chips;
         gold = 5;
-        catchInSeconds = 3;
-        possibleElements = 15;
+        catchInSeconds = 2;
+        possibleElements = 6;
     }
 }
