@@ -6,9 +6,9 @@ using TMPro; // Assuming you're using TextMesh Pro
 
 public class Upgrades : MonoBehaviour
 {
-    public int upgradeCostBait = 3; // Base cost for upgrades
+    public int upgradeCostBait; // Base cost for upgrades
     public static int money; // Player's current money
-    public int upgradeableBait = 4; // Flag to indicate if upgrades are available (optional)
+    public int upgradeableBait; // Flag to indicate if upgrades are available (optional)
 
     public TMP_Text goldText; // Text object to display money (using Text with capital T)
     public TMP_Text baitCostText;

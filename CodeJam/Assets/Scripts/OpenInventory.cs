@@ -9,5 +9,7 @@ public class OpenInventory : MonoBehaviour
     public void OpenCloseInventory()
     {
         inventoryPanel.SetActive(!inventoryPanel.activeSelf);
+        Debug.Log(inventoryPanel.activeSelf);
     }
+
 }
