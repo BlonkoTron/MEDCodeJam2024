@@ -53,7 +53,7 @@ public class FishingRodVisuals : MonoBehaviour
         StartCoroutine(Move(bobber.transform, camAnim.moveTimer, bobber.transform.position, bobberStartPos));
         StartCoroutine(WaitToHide(camAnim.moveTimer));
     }
-    private void OnDisable()
+    private void OnDestroy()
     {
         ThrowRod.instance.OnUsingRod -= ThrowingRod;
         ThrowRod.instance.OnPullRod -= PullBack;
