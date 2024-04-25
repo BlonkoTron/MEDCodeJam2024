@@ -26,6 +26,27 @@ public class FishingManager : MonoBehaviour
     public GameObject normalFishPrefab;
     public GameObject bootPrefab;
    
+    public GameObject shrimpPrefab;
+
+    public GameObject duckPrefab;
+
+    public GameObject clownFishPrefab;
+
+    public GameObject swordFishFishPrefab;
+
+    public GameObject blobFishPrefab;
+
+    public GameObject pufferFishPrefab;
+
+    public GameObject crabFishPrefab;
+
+    public GameObject fishAndChipsPrefab;
+
+    public GameObject catFishPrefab;
+
+    public GameObject flatFishPrefab;
+
+    public GameObject rainbowFishPrefab;
 
     private bool isFishing = false;
     public bool isDisplaying = false;
@@ -39,8 +60,25 @@ public class FishingManager : MonoBehaviour
 
     private Catch currentCatch;
 
+    public List<Catch> typesOfCatches = new List<Catch>
+    {
+        new BlobFish(),
+        new Boot(),
+        new CatFish(),
+        new ClownFish(),
+        new CrabFish(),
+        new DuckFish(),
+        new Fish(),
+        new FishAndChips(),
+        new FlatFish(),
+        new PufferFish(),
+        new RainbowFish(),
+        new ShrimpFish(),
+        new SwordFish()
+    };
+
     //this is just a stand in until the real inventory is added
-    public List<Catch> inventory = new();
+    //public List<Catch> inventory = new();
 
     public bool usingTestControls = false;
 
@@ -59,8 +97,22 @@ public class FishingManager : MonoBehaviour
         bouncingSprite.SetActive(false);
 
         presentationFlair.SetActive(false);
-        
 
+
+        foreach (Catch @catch in typesOfCatches)
+        {
+            for (int i = @catch.possibleElements; i>=0; i--)
+            {
+                possibleCatches.Add(@catch);
+            }   
+        }
+
+        //debug the list of possible things
+        foreach (Catch @catch in possibleCatches)
+        {
+            Debug.Log(@catch.type);
+        }
+        /*
         for (int i = possibleBoots; i>=0; i--)
         {
             possibleCatches.Add(new Boot());
@@ -69,7 +121,7 @@ public class FishingManager : MonoBehaviour
         {
             possibleCatches.Add(new Fish());
         }
-
+        */
         //waitText = FindObjectOfType<Text>();
         //waitText.text = "Started the system, ready to fish...";
     }
@@ -184,7 +236,7 @@ public class FishingManager : MonoBehaviour
         if (isCatchable)
         {
             // this is just a stand-in; connect this to D's code and update the inventory
-            inventory.Add(currentCatch);
+            Inventory.instance.AddFish(currentCatch.type);
 
             //waitText.text = "Success!";
             Debug.Log($"Caught a {currentCatch.type}!");
@@ -224,6 +276,40 @@ public class FishingManager : MonoBehaviour
             case FishType.boot:
                 catchPresentationObject = Instantiate(bootPrefab, Vector3.zero, Quaternion.identity);
                 break;
+            case FishType.shrimp:
+                catchPresentationObject = Instantiate(shrimpPrefab, Vector3.zero, Quaternion.identity);
+                break;
+            case FishType.duck:
+                catchPresentationObject = Instantiate(normalFishPrefab, Vector3.zero, Quaternion.identity);
+                break;
+            case FishType.clown:
+                catchPresentationObject = Instantiate(clownFishPrefab, Vector3.zero, Quaternion.identity);
+                break;
+            case FishType.sword:
+                catchPresentationObject = Instantiate(swordFishFishPrefab, Vector3.zero, Quaternion.identity);
+                break;
+            case FishType.blob:
+                catchPresentationObject = Instantiate(blobFishPrefab, Vector3.zero, Quaternion.identity);
+                break;
+            case FishType.puffer:
+                catchPresentationObject = Instantiate(pufferFishPrefab, Vector3.zero, Quaternion.identity);
+                break;
+            case FishType.crab:
+                catchPresentationObject = Instantiate(crabFishPrefab, Vector3.zero, Quaternion.identity);
+                break;
+            case FishType.chips:
+                catchPresentationObject = Instantiate(fishAndChipsPrefab, Vector3.zero, Quaternion.identity);
+                break;
+            case FishType.cat:
+                catchPresentationObject = Instantiate(catFishPrefab, Vector3.zero, Quaternion.identity);
+                break;
+            case FishType.flat:
+                catchPresentationObject = Instantiate(flatFishPrefab, Vector3.zero, Quaternion.identity);
+                break;
+            case FishType.rainbow:
+                catchPresentationObject = Instantiate(rainbowFishPrefab, Vector3.zero, Quaternion.identity);
+                break;
+
             default:
                 Debug.Log("you messed something up and fished something that we haven't programmed yet :(");
                 break;

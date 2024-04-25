@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
@@ -24,7 +25,6 @@ public class Inventory : MonoBehaviour
 
         InitializeFishData();
     }
-
     // Initializes fish data by populating lists with default values and references
     private void InitializeFishData()
     {
@@ -40,7 +40,7 @@ public class Inventory : MonoBehaviour
     }
 
     // Adds a fish to the inventory and updates the count and display
-    private void AddFish(FishType fishType)
+    public void AddFish(FishType fishType)
     {
         // Get the index corresponding to the fish type
         int index = (int)fishType;
@@ -49,12 +49,12 @@ public class Inventory : MonoBehaviour
         fishCounts[index]++;
 
         // Update the TextMeshPro component to display the new count
-        fishTexts[index].text = fishCounts[index].ToString();
+        fishTexts[index].text = "Caught: " + fishCounts[index].ToString();
 
         // If there is at least one fish of this type, show its sprite
         if (fishCounts[index] > 0)
         {
-            fishSprites[index].GetComponent<SpriteRenderer>().color = Color.white;
+            fishSprites[index].GetComponent<Image>().color = Color.white;
         }
     }
 }
