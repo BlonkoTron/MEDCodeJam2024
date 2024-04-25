@@ -8,7 +8,7 @@ public abstract class Catch
     
     public FishType type;
     public int gold;
-
+    public int possibleElements;
     public int catchInSeconds;
 
 }
