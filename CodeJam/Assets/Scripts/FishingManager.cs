@@ -26,6 +26,7 @@ public class FishingManager : MonoBehaviour
     public GameObject catFishPrefab;
     public GameObject flatFishPrefab;
     public GameObject rainbowFishPrefab;
+    public AudioClip vibrateSound;
 
     private bool isFishing = false;
     public bool isDisplaying = false;
@@ -165,7 +166,7 @@ public class FishingManager : MonoBehaviour
         
         currentCatch = possibleCatches[Random.Range(0, possibleCatches.Count - 1)];
         Vibrator.Vibrate(currentCatch.catchInSeconds* convertToMilliseconds);  // This Needs to be tested
-
+        AudioManager.PlaySound(vibrateSound);
         isCatchable = true;
     }
 
