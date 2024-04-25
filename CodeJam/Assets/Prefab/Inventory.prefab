@@ -1113,7 +1113,7 @@ GameObject:
   - component: {fileID: 3508934139466864492}
   - component: {fileID: 7533168942611199127}
   m_Layer: 5
-  m_Name: CatfishCounter
+  m_Name: FlatfishCounter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1383,7 +1383,7 @@ Canvas:
   m_GameObject: {fileID: 4282096370940420109}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -1952,7 +1952,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8866792737875352316
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3252,6 +3252,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3529953345538852602}
   - component: {fileID: 7861939536519022034}
+  - component: {fileID: 5146930871375209063}
   m_Layer: 0
   m_Name: InventoryOpener
   m_TagString: Untagged
@@ -3287,6 +3288,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryPanel: {fileID: 6559256630178989272}
+  inventoryButton: {fileID: 8121506306077460046}
+--- !u!114 &5146930871375209063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9039377150042124618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25049dcd7fd6bfb4ba950e3f454696f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fishTextFields:
+  - {fileID: 5454883970904716589}
+  - {fileID: 661052358307910078}
+  - {fileID: 8245910664824920599}
+  - {fileID: 1024494109037087552}
+  - {fileID: 7533168942611199127}
+  - {fileID: 1657402643632033839}
+  - {fileID: 4180272768107880536}
+  - {fileID: 1868491913062260368}
+  - {fileID: 7971227437916662261}
+  - {fileID: 7874972854953049628}
+  - {fileID: 1869752064657828778}
+  - {fileID: 5188322145956268453}
+  - {fileID: 4441621225195768980}
+  fishSpritesObjects:
+  - {fileID: 7907140812477100061}
+  - {fileID: 308885509504090702}
+  - {fileID: 8050002336161377077}
+  - {fileID: 977169967413534500}
+  - {fileID: 2224814080552039433}
+  - {fileID: 622365996224885340}
+  - {fileID: 4222506985796363029}
+  - {fileID: 7663313859765635931}
+  - {fileID: 7899421119205764905}
+  - {fileID: 5678415532144530333}
+  - {fileID: 3528041754136489905}
+  - {fileID: 8892004478875078965}
+  - {fileID: 8539591549236857336}
 --- !u!1 &9112886838124910694
 GameObject:
   m_ObjectHideFlags: 0

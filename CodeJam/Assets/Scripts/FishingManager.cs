@@ -235,11 +235,16 @@ public class FishingManager : MonoBehaviour
         //waitText.text = "trying to catch";
         if (isCatchable)
         {
+            Debug.Log($"Caught a {currentCatch.type}!");
             // this is just a stand-in; connect this to D's code and update the inventory
-            Inventory.instance.AddFish(currentCatch.type);
+
+            if (Inventory.instance == null)
+                Debug.LogWarning("thereøs no inventory instnce :(");
+            else
+                Inventory.instance.AddFish(currentCatch.type);
 
             //waitText.text = "Success!";
-            Debug.Log($"Caught a {currentCatch.type}!");
+           
 
             //then triumphantly display the catch and return to the
             //"not actively fishing" screen (before the fishing rod is cast out)
@@ -341,17 +346,17 @@ public class FishingManager : MonoBehaviour
 
 public enum FishType
 {
-    normal,
-    boot,
-    shrimp,
-    duck,
-    clown,
-    sword,
-    blob,
-    puffer,
-    crab,
-    chips,
-    cat,
-    flat,
-    rainbow
+    normal = 0,
+    boot = 12,
+    shrimp = 10,
+    duck = 5,
+    clown = 8,
+    sword = 7,
+    blob = 2,
+    puffer = 9,
+    crab = 11,
+    chips = 6,
+    cat = 1,
+    flat = 4,
+    rainbow = 3
 }
