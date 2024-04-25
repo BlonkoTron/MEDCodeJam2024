@@ -70,7 +70,7 @@ public class Upgrades : MonoBehaviour
         // Update cost text if cost changes during gameplay
         baitCostText.text = "Cost: " + upgradeCostBait.ToString();
         goldText.text = "Gold: " + money.ToString();
-        fishingrodLevelText.text = $"Fishing rod level: {levelNames[upgradeableBait]}";
+        fishingrodLevelText.text = $"Fishing rod level: {levelNames[upgradeableBait-1]}";
         if (upgradeableBait == 0)
         {
             baitCostText.text = "Max";
