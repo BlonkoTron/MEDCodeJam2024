@@ -23,7 +23,7 @@ public class FishingRodVisuals : MonoBehaviour
         anim = GetComponent<Animator>();
         camAnim = Camera.main.GetComponent<CameraAnimate>();
         ThrowRod.instance.OnUsingRod += ThrowingRod;
-        ThrowRod.instance.OnUsingRod += PullBack;
+        ThrowRod.instance.OnPullRod += PullBack;
     }
     private void Update()
     {
@@ -41,7 +41,8 @@ public class FishingRodVisuals : MonoBehaviour
         AudioManager.PlaySound(throwSound);
         anim.SetTrigger("Throw");
         bobber.SetActive(true);
-        StartCoroutine(Move(bobber.transform, camAnim.moveTimer, transform.position, camAnim.catchPosition));
+        Vector3 endPos = new Vector3(camAnim.catchPosition.x, camAnim.catchPosition.y, transform.position.z);
+        StartCoroutine(Move(bobber.transform, camAnim.moveTimer, transform.position, endPos));
         StartCoroutine(WaitToTrigger(camAnim.moveTimer));
     }
     private void PullBack()
@@ -49,12 +50,13 @@ public class FishingRodVisuals : MonoBehaviour
         AudioManager.PlaySound(reelInSound);
         bobber.GetComponent<Animator>().SetTrigger("bobberChange");
         watersplash.SetActive(false);
-        StartCoroutine(Move(bobber.transform, camAnim.moveTimer, transform.position, bobberStartPos));
+        StartCoroutine(Move(bobber.transform, camAnim.moveTimer, bobber.transform.position, bobberStartPos));
+        StartCoroutine(WaitToHide(camAnim.moveTimer));
     }
     private void OnDisable()
     {
         ThrowRod.instance.OnUsingRod -= ThrowingRod;
-        ThrowRod.instance.OnUsingRod -= PullBack;
+        ThrowRod.instance.OnPullRod -= PullBack;
     }
     private IEnumerator Move(Transform tr,float time, Vector3 start, Vector3 end)
     {
@@ -74,5 +76,10 @@ public class FishingRodVisuals : MonoBehaviour
         bobber.GetComponent<Animator>().SetTrigger("bobberChange");
         watersplash.SetActive(true);
         AudioManager.PlaySound(hitwaterSound);
+    }
+    private IEnumerator WaitToHide(float time)
+    {
+        yield return new WaitForSeconds(time);
+        bobber.SetActive(false);
     }
 }

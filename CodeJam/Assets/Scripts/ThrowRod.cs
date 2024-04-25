@@ -52,11 +52,21 @@ void Update()
         Debug.Log("Pulled in!");
         ignoreInputUntil = Time.time + ignoreInputDuration; // Set the time until which to ignore input
     }
-    if (inventory = null)   // Check if the inventory is null
-    {
-        ignoreInputUntil = Time.time + ignoreInputDuration;
+        if (Input.GetKeyDown(KeyCode.T) && !isThrown)
+        {
+            OnUsingRod?.Invoke();
+            Debug.Log("Thrown!");
+            isThrown = true;
+            ignoreInputUntil = Time.time + ignoreInputDuration; // Set the time until which to ignore input
+        }
+        else if (Input.GetKeyDown(KeyCode.T) && isThrown)
+        {
+            isThrown = false;
+            OnPullRod?.Invoke();
+            Debug.Log("Pulled in!");
+            ignoreInputUntil = Time.time + ignoreInputDuration; // Set the time until which to ignore input
+        }
     }
-}
 
 
 IEnumerator WaitAndMove()

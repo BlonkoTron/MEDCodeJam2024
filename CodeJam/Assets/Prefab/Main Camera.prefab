@@ -121,11 +121,11 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: -0.33468738
+      outSlope: -0.33468738
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.10701102
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -133,7 +133,6 @@ MonoBehaviour:
   moveTimer: 1.5
   catchPositionTransform: {fileID: 6988222389139463399}
   catchPosition: {x: 0, y: 0, z: 0}
-  throwSound: {fileID: 8300000, guid: 8923ef455272b7f448034d4ec0d1903b, type: 3}
 --- !u!1 &4337510555338266306
 GameObject:
   m_ObjectHideFlags: 0
