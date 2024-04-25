@@ -12,14 +12,6 @@ public class OpenInventory : MonoBehaviour
     {
         inventoryPanel.SetActive(!inventoryPanel.activeSelf);
         Debug.Log(inventoryPanel.activeSelf);
-        if (inventoryPanel.activeSelf)
-        {
-            FishingRod.SetActive(false);
-        }
-        else
-        {
-            FishingRod.SetActive(true);
-        }
     }
     private void Update()
     {
