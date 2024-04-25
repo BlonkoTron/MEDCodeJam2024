@@ -11,4 +11,5 @@ public class OpenInventory : MonoBehaviour
         inventoryPanel.SetActive(!inventoryPanel.activeSelf);
         Debug.Log(inventoryPanel.activeSelf);
     }
+
 }
