@@ -25,10 +25,6 @@ public class Inventory : MonoBehaviour
 
         InitializeFishData();
     }
-    public void Start()
-    {
-        AddFish(FishType.normal);
-    }
     // Initializes fish data by populating lists with default values and references
     private void InitializeFishData()
     {
