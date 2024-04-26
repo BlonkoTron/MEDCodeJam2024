@@ -1447,10 +1447,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: FishingRod
       objectReference: {fileID: 0}
-    - target: {fileID: 8139475782612204389, guid: 8a29b4773c3b0c349aabd7981d79043c, type: 3}
-      propertyPath: shakeTime
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 8885871348051473647, guid: 8a29b4773c3b0c349aabd7981d79043c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.5
