@@ -163,8 +163,8 @@ public class FishingManager : MonoBehaviour
 
     void ReadyToCatch()
     {
-        Debug.Log("something has bit onto the fishing rod..");
-        
+        var myBobber = GameObject.FindGameObjectWithTag("bobber").GetComponent<Shake>();
+        myBobber.ShakeMe();
         currentCatch = possibleCatches[Random.Range(0, possibleCatches.Count - 1)];
         Vibrator.Vibrate(currentCatch.catchInSeconds* convertToMilliseconds);  // This Needs to be tested
         AudioManager.PlaySound(vibrateSound);
@@ -173,6 +173,8 @@ public class FishingManager : MonoBehaviour
 
     private void TryCatch()
     {
+        var myBobber = GameObject.FindGameObjectWithTag("bobber").GetComponent<Shake>();
+        myBobber.StopShake();
         Vibrator.Cancel();
         if (isCatchable)
         {
