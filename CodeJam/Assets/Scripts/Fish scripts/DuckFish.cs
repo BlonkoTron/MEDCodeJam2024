@@ -1,3 +1,4 @@
+/*
 public class DuckFish : Catch
 {
     public DuckFish()
@@ -8,3 +9,4 @@ public class DuckFish : Catch
         possibleElements = 2;
     }
 }
+*/

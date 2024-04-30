@@ -28,6 +28,8 @@ public class FishingManager : MonoBehaviour
     public GameObject rainbowFishPrefab;
     public AudioClip vibrateSound;
 
+    public GameObject bobber;
+
     private bool isFishing = false;
     public bool isDisplaying = false;
     private bool isCatchable = false;
@@ -42,19 +44,19 @@ public class FishingManager : MonoBehaviour
 
     public List<Catch> typesOfCatches = new List<Catch>
     {
-        new BlobFish(),
-        new Boot(),
-        new CatFish(),
-        new ClownFish(),
-        new CrabFish(),
-        new DuckFish(),
-        new Fish(),
-        new FishAndChips(),
-        new FlatFish(),
-        new PufferFish(),
-        new RainbowFish(),
-        new ShrimpFish(),
-        new SwordFish()
+        new Catch(FishType.blob),
+        new Catch(FishType.boot),
+        new Catch(FishType.cat),
+        new Catch(FishType.clown),
+        new Catch(FishType.crab),
+        new Catch(FishType.duck),
+        new Catch(FishType.normal),
+        new Catch(FishType.chips),
+        new Catch(FishType.flat),
+        new Catch(FishType.puffer),
+        new Catch(FishType.rainbow),
+        new Catch(FishType.shrimp),
+        new Catch(FishType.sword)
     };
 
     public bool usingTestControls = false;
@@ -140,7 +142,7 @@ public class FishingManager : MonoBehaviour
 
     void StartFishing()
     {
-        Reset();
+        Reset(); ///Huhh?
         if (!isFishing)
         {
 
@@ -149,12 +151,14 @@ public class FishingManager : MonoBehaviour
         }
         else {
             //waitText.text = "Already fishing.";
+            Debug.Log("Already fishing.");
         }
     }
 
     IEnumerator Wait()
     {
         isFishing = true;
+        Debug.Log("Waiting...");
         //wait for 2-10 seconds: adjust the timing if needed
         yield return new WaitForSeconds(Random.Range(2, maxCatchTime));
         ReadyToCatch();
@@ -163,7 +167,7 @@ public class FishingManager : MonoBehaviour
 
     void ReadyToCatch()
     {
-        var myBobber = GameObject.FindGameObjectWithTag("bobber").GetComponent<Shake>();
+        var myBobber = bobber.GetComponent<Shake>();
         myBobber.ShakeMe();
         currentCatch = possibleCatches[Random.Range(0, possibleCatches.Count - 1)];
         Vibrator.Vibrate(currentCatch.catchInSeconds* convertToMilliseconds);  // This Needs to be tested
@@ -173,7 +177,7 @@ public class FishingManager : MonoBehaviour
 
     private void TryCatch()
     {
-        var myBobber = GameObject.FindGameObjectWithTag("bobber").GetComponent<Shake>();
+        var myBobber = bobber.GetComponent<Shake>();
         myBobber.StopShake();
         Vibrator.Cancel();
         if (isCatchable)
@@ -182,12 +186,10 @@ public class FishingManager : MonoBehaviour
             // this is just a stand-in; connect this to D's code and update the inventory
 
             if (Inventory.instance == null)
-                Debug.LogWarning("there�s no inventory instnce :(");
+                Debug.LogWarning("there�s no inventory instance :(");
             else
                 Inventory.instance.AddFish(currentCatch.type);           
 
-            //then triumphantly display the catch and return to the
-            //"not actively fishing" screen (before the fishing rod is cast out)
             fishCounter++;
             Upgrades.money += currentCatch.gold;
             fishCounterText.text = "Fish acquired: " + fishCounter.ToString();
@@ -210,48 +212,44 @@ public class FishingManager : MonoBehaviour
         presentationFlair.SetActive(true);
         switch (type.type)
         {
-            case FishType.normal:
+            case FishType.normal: //1
                 catchPresentationObject = Instantiate(normalFishPrefab, Vector3.zero, Quaternion.identity);
                 break;
-            case FishType.boot:
+            case FishType.boot: //2
                 catchPresentationObject = Instantiate(bootPrefab, Vector3.zero, Quaternion.identity);
                 break;
-            case FishType.shrimp:
+            case FishType.shrimp: //3
                 catchPresentationObject = Instantiate(shrimpPrefab, Vector3.zero, Quaternion.identity);
                 break;
-            case FishType.duck:
+            case FishType.duck: //4
                 catchPresentationObject = Instantiate(duckPrefab, Vector3.zero, Quaternion.identity);
                 break;
-            case FishType.clown:
+            case FishType.clown: //5
                 catchPresentationObject = Instantiate(clownFishPrefab, Vector3.zero, Quaternion.identity);
                 break;
-            case FishType.sword:
+            case FishType.sword: //6
                 catchPresentationObject = Instantiate(swordFishFishPrefab, Vector3.zero, Quaternion.identity);
                 break;
-            case FishType.blob:
+            case FishType.blob: //7
                 catchPresentationObject = Instantiate(blobFishPrefab, Vector3.zero, Quaternion.identity);
                 break;
-            case FishType.puffer:
+            case FishType.puffer: //8
                 catchPresentationObject = Instantiate(pufferFishPrefab, Vector3.zero, Quaternion.identity);
                 break;
-            case FishType.crab:
+            case FishType.crab: //9
                 catchPresentationObject = Instantiate(crabFishPrefab, Vector3.zero, Quaternion.identity);
                 break;
-            case FishType.chips:
+            case FishType.chips: //10
                 catchPresentationObject = Instantiate(fishAndChipsPrefab, Vector3.zero, Quaternion.identity);
                 break;
-            case FishType.cat:
+            case FishType.cat: //11
                 catchPresentationObject = Instantiate(catFishPrefab, Vector3.zero, Quaternion.identity);
                 break;
-            case FishType.flat:
+            case FishType.flat: //12
                 catchPresentationObject = Instantiate(flatFishPrefab, Vector3.zero, Quaternion.identity);
                 break;
-            case FishType.rainbow:
+            case FishType.rainbow: //13
                 catchPresentationObject = Instantiate(rainbowFishPrefab, Vector3.zero, Quaternion.identity);
-                break;
-
-            default:
-                Debug.Log("you messed something up and fished something that we haven't programmed yet :(");
                 break;
         }
 
@@ -273,21 +271,4 @@ public class FishingManager : MonoBehaviour
         Debug.Log("Fishing has reset.");
 
     }
-}
-
-public enum FishType
-{
-    normal = 0,
-    boot = 12,
-    shrimp = 10,
-    duck = 5,
-    clown = 8,
-    sword = 7,
-    blob = 2,
-    puffer = 9,
-    crab = 11,
-    chips = 6,
-    cat = 1,
-    flat = 4,
-    rainbow = 3
 }

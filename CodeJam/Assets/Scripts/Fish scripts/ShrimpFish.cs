@@ -1,3 +1,4 @@
+/*
 public class ShrimpFish : Catch
 {
     public ShrimpFish()
@@ -8,3 +9,4 @@ public class ShrimpFish : Catch
         possibleElements = 1;
     }
 }
+*/

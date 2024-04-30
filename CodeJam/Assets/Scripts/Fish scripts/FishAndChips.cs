@@ -1,3 +1,4 @@
+/*
 public class FishAndChips : Catch
 {
     public FishAndChips()
@@ -8,3 +9,4 @@ public class FishAndChips : Catch
         possibleElements = 6;
     }
 }
+*/

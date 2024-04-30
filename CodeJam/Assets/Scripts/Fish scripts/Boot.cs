@@ -1,3 +1,4 @@
+/*
 public class Boot : Catch
 {
     public Boot()
@@ -8,3 +9,4 @@ public class Boot : Catch
         possibleElements = 8;
     }
 }
+*/

@@ -1,3 +1,4 @@
+/*
 public class RainbowFish : Catch
 {
     public RainbowFish()
@@ -8,3 +9,4 @@ public class RainbowFish : Catch
         possibleElements = 10;
     }
 }
+*/

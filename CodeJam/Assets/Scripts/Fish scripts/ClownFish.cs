@@ -1,3 +1,4 @@
+/*
 public class ClownFish : Catch
 {
     public ClownFish()
@@ -8,3 +9,4 @@ public class ClownFish : Catch
         possibleElements = 5;
     }
 }
+*/

@@ -264,6 +264,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0e63abbce8ac7f4ab139882c99d6c16, type: 3}
+--- !u!1 &63697242 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 243617277546769980, guid: 8a29b4773c3b0c349aabd7981d79043c, type: 3}
+  m_PrefabInstance: {fileID: 1512821385}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &136536528
 GameObject:
   m_ObjectHideFlags: 0
@@ -679,6 +684,66 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76a03cd93cc1d264da90253278846dd2, type: 3}
+--- !u!1 &710729962
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 710729965}
+  - component: {fileID: 710729964}
+  - component: {fileID: 710729963}
+  m_Layer: 0
+  m_Name: VisualScripting SceneVariables
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &710729963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 710729962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 765181c9ef4b24d32a4f7cbd2ef370dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &710729964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 710729962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e741851cba3ad425c91ecf922cc6b379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"declarations":{"Kind":"Scene","collection":{"$content":[],"$version":"A"},"$version":"A"}}'
+    _objectReferences: []
+--- !u!4 &710729965
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 710729962}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &749309563
 GameObject:
   m_ObjectHideFlags: 0
@@ -797,7 +862,7 @@ GameObject:
   - component: {fileID: 937433583}
   - component: {fileID: 937433582}
   m_Layer: 0
-  m_Name: Fishing bob
+  m_Name: Fishing manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -831,6 +896,7 @@ MonoBehaviour:
   flatFishPrefab: {fileID: 3634434647157671950, guid: 26bd94d342f880f44803819e652e71eb, type: 3}
   rainbowFishPrefab: {fileID: 1202255651196093171, guid: 5ccaab58654c31e4595f0b33fbfbc69c, type: 3}
   vibrateSound: {fileID: 8300000, guid: 58180a862a394d2498a9c91461167679, type: 3}
+  bobber: {fileID: 63697242}
   isDisplaying: 0
   maxCatchTime: 10
   usingTestControls: 1
@@ -1439,6 +1505,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 678418244790393404, guid: 8a29b4773c3b0c349aabd7981d79043c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4302671598349325054, guid: 8a29b4773c3b0c349aabd7981d79043c, type: 3}
       propertyPath: fishManager
       value: 
@@ -3225,3 +3295,4 @@ SceneRoots:
   - {fileID: 2112174934}
   - {fileID: 8662868998067836254}
   - {fileID: 37218824}
+  - {fileID: 710729965}

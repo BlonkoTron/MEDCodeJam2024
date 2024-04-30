@@ -1,3 +1,4 @@
+/*
 public class FlatFish : Catch
 {
     public FlatFish()
@@ -8,3 +9,4 @@ public class FlatFish : Catch
         possibleElements = 10;
     }
 }
+*/
