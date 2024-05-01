@@ -209,7 +209,7 @@ public class FishingManager : MonoBehaviour
         isDisplaying = true;
 
         //activate the triumphant display
-        presentationFlair.SetActive(true);
+        
         switch (type.type)
         {
             case FishType.normal: //1
@@ -252,6 +252,8 @@ public class FishingManager : MonoBehaviour
                 catchPresentationObject = Instantiate(rainbowFishPrefab, Vector3.zero, Quaternion.identity);
                 break;
         }
+
+        presentationFlair.SetActive(true);
 
     }
 
