@@ -56,8 +56,27 @@ void Update()
     {
         ignoreInputUntil = Time.time + ignoreInputInventory; // Set the time until which to ignore input
     }
-        
-}
+
+        if (Input.GetKeyDown(KeyCode.T) && !isThrown)
+        {
+            OnUsingRod?.Invoke();
+            Debug.Log("Thrown!");
+            isThrown = true;
+            ignoreInputUntil = Time.time + ignoreInputDuration; // Set the time until which to ignore input
+        }
+        else if (Input.GetKeyDown(KeyCode.T) && isThrown)
+        {
+            isThrown = false;
+            OnPullRod?.Invoke();
+            Debug.Log("Pulled in!");
+            ignoreInputUntil = Time.time + ignoreInputDuration; // Set the time until which to ignore input
+        }
+        else if (inventory = null)
+        {
+            ignoreInputUntil = Time.time + ignoreInputInventory; // Set the time until which to ignore input
+        }
+
+    }
 
 
 IEnumerator WaitAndMove()
