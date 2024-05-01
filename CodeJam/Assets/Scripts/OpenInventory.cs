@@ -20,11 +20,11 @@ public class OpenInventory : MonoBehaviour
     }
     private void Update()
     {
-         if (Upgrades.doDisplayUI)
+        if (Upgrades.doDisplayUI)
         {
           inventoryButton.SetActive(true);
         }
-         else
+        else
         {
           inventoryButton.SetActive(false);
         }
