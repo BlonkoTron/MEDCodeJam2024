@@ -47,7 +47,7 @@ public class Upgrades : MonoBehaviour
     {
         // Check if enough money and upgrades are available (optional)
 
-        bool canUpgradeBait = money >= upgradeCostBait || upgradeableBait == 0; // Assuming non-nullable
+        bool canUpgradeBait = money >= upgradeCostBait || upgradeableBait == 1; // Assuming non-nullable
 
         if (doDisplayUI)
         {
@@ -71,7 +71,7 @@ public class Upgrades : MonoBehaviour
         baitCostText.text = "Cost: " + upgradeCostBait.ToString();
         goldText.text = "Gold: " + money.ToString();
         fishingrodLevelText.text = $"Fishing rod level: {levelNames[upgradeableBait-1]}";
-        if (upgradeableBait == 0)
+        if (upgradeableBait == 1)
         {
             baitCostText.text = "Max";
         }
@@ -81,7 +81,7 @@ public class Upgrades : MonoBehaviour
     public void UpgradeBait() // Renamed for clarity
     {
         // Check if enough money and upgrade is available
-        if (money >= upgradeCostBait && upgradeableBait > 0)
+        if (money >= upgradeCostBait && upgradeableBait > 1)
         {
             upgradeLevelBait++; // Increase bait level
             money -= upgradeCostBait; // Deduct cost from money
