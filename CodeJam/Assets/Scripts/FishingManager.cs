@@ -8,7 +8,7 @@ using TMPro;
 
 public class FishingManager : MonoBehaviour
 { 
-    private List<Catch> possibleCatches = new();
+    private readonly List<Catch> possibleCatches = new();
 
     public GameObject presentationFlair;
     [HideInInspector] public GameObject catchPresentationObject;
@@ -73,7 +73,6 @@ public class FishingManager : MonoBehaviour
 
         presentationFlair.SetActive(false);
 
-
         foreach (Catch @catch in typesOfCatches)
         {
             for (int i = @catch.possibleElements; i>=0; i--)
@@ -110,20 +109,6 @@ public class FishingManager : MonoBehaviour
             }
         }
 
-        if (usingTestControls)
-        {
-            if (Input.GetKeyDown(KeyCode.W)) //replace this with whatever initiates the fishing sequence
-                                             //(i.e. when the bob is out on the water waiting for fish)
-            {
-                StartFishing();
-            }
-
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                TryCatch();
-            }
-        }
-
         if (isDisplaying && Input.GetMouseButtonDown(0))
         {
             Reset();
@@ -140,17 +125,16 @@ public class FishingManager : MonoBehaviour
 
     }
 
+    //called OnThrowRod
     void StartFishing()
     {
-        Reset(); ///Huhh?
         if (!isFishing)
         {
-
             Debug.Log("Fishing initiated");
             StartCoroutine(Wait());
         }
-        else {
-            //waitText.text = "Already fishing.";
+        else
+        {
             Debug.Log("Already fishing.");
         }
     }
@@ -159,7 +143,7 @@ public class FishingManager : MonoBehaviour
     {
         isFishing = true;
         Debug.Log("Waiting...");
-        //wait for 2-10 seconds: adjust the timing if needed
+        //wait for 2-more seconds depending on the level of upgrades
         yield return new WaitForSeconds(Random.Range(2, maxCatchTime));
         ReadyToCatch();
         yield break;
@@ -175,6 +159,7 @@ public class FishingManager : MonoBehaviour
         isCatchable = true;
     }
 
+    //called OnPullRod
     private void TryCatch()
     {
         var myBobber = bobber.GetComponent<Shake>();
@@ -183,7 +168,6 @@ public class FishingManager : MonoBehaviour
         if (isCatchable)
         {
             Debug.Log($"Caught a {currentCatch.type}!");
-            // this is just a stand-in; connect this to D's code and update the inventory
 
             if (Inventory.instance == null)
                 Debug.LogWarning("there�s no inventory instance :(");
@@ -199,9 +183,7 @@ public class FishingManager : MonoBehaviour
         {
             Debug.Log("Nothing to catch yet :)");
             Reset();
-        }
-            
-
+        } 
     }
 
     public void DisplayCatch(Catch type)
@@ -209,7 +191,6 @@ public class FishingManager : MonoBehaviour
         isDisplaying = true;
 
         //activate the triumphant display
-        
         switch (type.type)
         {
             case FishType.normal: //1
@@ -269,7 +250,6 @@ public class FishingManager : MonoBehaviour
         catchingTimer = 0f;
         StopAllCoroutines();
 
-        //waitText.text = "Reset.";
         Debug.Log("Fishing has reset.");
 
     }
