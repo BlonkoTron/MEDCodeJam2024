@@ -76,7 +76,6 @@ void Update()
             ignoreInputUntil = Time.time + ignoreInputInventory; // Set the time until which to ignore input
         }
 
-<<<<<<< HEAD
     }
 
 
@@ -109,8 +108,6 @@ IEnumerator WaitAndMove()
         // Add your code here to handle the end of the time slot without action
     }
   
-=======
->>>>>>> parent of 35a33d5 (Update ThrowRod.cs)
 }
 
 }
