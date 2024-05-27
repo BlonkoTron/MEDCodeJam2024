@@ -6,26 +6,42 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
 
+public enum FishType //13 types
+{
+    normal = 0,
+    boot = 12,
+    shrimp = 10,
+    duck = 5,
+    clown = 8,
+    sword = 7,
+    blob = 2,
+    puffer = 9,
+    crab = 11,
+    chips = 6,
+    cat = 1,
+    flat = 4,
+    rainbow = 3
+}
+
+[System.Serializable]
+public class Fish
+{
+    public GameObject fishPrefab;
+    public float spawnChance;
+    public FishType type;
+    public int catchInSeconds;
+    public int gold;
+}
+
 public class FishingManager : MonoBehaviour
 { 
-    private List<Catch> possibleCatches = new();
+    [SerializeField] private List<Fish> possibleCatches = new();
+    private List<Fish> Catches = new();
 
     public GameObject presentationFlair;
     [HideInInspector] public GameObject catchPresentationObject;
 
-    public GameObject normalFishPrefab;
-    public GameObject bootPrefab; 
-    public GameObject shrimpPrefab;
-    public GameObject duckPrefab;
-    public GameObject clownFishPrefab;
-    public GameObject swordFishFishPrefab;
-    public GameObject blobFishPrefab;
-    public GameObject pufferFishPrefab;
-    public GameObject crabFishPrefab;
-    public GameObject fishAndChipsPrefab;
-    public GameObject catFishPrefab;
-    public GameObject flatFishPrefab;
-    public GameObject rainbowFishPrefab;
+
     public AudioClip vibrateSound;
 
     public GameObject bobber;
@@ -40,24 +56,7 @@ public class FishingManager : MonoBehaviour
 
     private int convertToMilliseconds = 1000;
 
-    private Catch currentCatch;
-
-    public List<Catch> typesOfCatches = new List<Catch>
-    {
-        new Catch(FishType.blob),
-        new Catch(FishType.boot),
-        new Catch(FishType.cat),
-        new Catch(FishType.clown),
-        new Catch(FishType.crab),
-        new Catch(FishType.duck),
-        new Catch(FishType.normal),
-        new Catch(FishType.chips),
-        new Catch(FishType.flat),
-        new Catch(FishType.puffer),
-        new Catch(FishType.rainbow),
-        new Catch(FishType.shrimp),
-        new Catch(FishType.sword)
-    };
+    private Fish currentCatch;
 
     public bool usingTestControls = false;
 
@@ -73,20 +72,17 @@ public class FishingManager : MonoBehaviour
 
         presentationFlair.SetActive(false);
 
-
-        foreach (Catch @catch in typesOfCatches)
+        for (int i = 0; i < possibleCatches.Count; i++)
         {
-            for (int i = @catch.possibleElements; i>=0; i--)
+            int numOfItems = Mathf.RoundToInt(possibleCatches[i].spawnChance * 100f);
+
+            for (int j = 0; j < numOfItems; j++)
             {
-                possibleCatches.Add(@catch);
-            }   
+                Catches.Add(possibleCatches[i]);
+            }
+
         }
 
-        //debug the list of possible things
-        foreach (Catch @catch in possibleCatches)
-        {
-            Debug.Log(@catch.type);
-        }
     }
 
     //unsubscribe from events to prevent memory mess
@@ -193,7 +189,7 @@ public class FishingManager : MonoBehaviour
             fishCounter++;
             Upgrades.money += currentCatch.gold;
             fishCounterText.text = "Fish acquired: " + fishCounter.ToString();
-            DisplayCatch(currentCatch);
+            DisplayCatch(currentCatch.fishPrefab);
         }
         else
         {
@@ -204,54 +200,13 @@ public class FishingManager : MonoBehaviour
 
     }
 
-    public void DisplayCatch(Catch type)
+    public void DisplayCatch(GameObject fishDisplayPrefab)
     {
         isDisplaying = true;
 
         //activate the triumphant display
-        
-        switch (type.type)
-        {
-            case FishType.normal: //1
-                catchPresentationObject = Instantiate(normalFishPrefab, Vector3.zero, Quaternion.identity);
-                break;
-            case FishType.boot: //2
-                catchPresentationObject = Instantiate(bootPrefab, Vector3.zero, Quaternion.identity);
-                break;
-            case FishType.shrimp: //3
-                catchPresentationObject = Instantiate(shrimpPrefab, Vector3.zero, Quaternion.identity);
-                break;
-            case FishType.duck: //4
-                catchPresentationObject = Instantiate(duckPrefab, Vector3.zero, Quaternion.identity);
-                break;
-            case FishType.clown: //5
-                catchPresentationObject = Instantiate(clownFishPrefab, Vector3.zero, Quaternion.identity);
-                break;
-            case FishType.sword: //6
-                catchPresentationObject = Instantiate(swordFishFishPrefab, Vector3.zero, Quaternion.identity);
-                break;
-            case FishType.blob: //7
-                catchPresentationObject = Instantiate(blobFishPrefab, Vector3.zero, Quaternion.identity);
-                break;
-            case FishType.puffer: //8
-                catchPresentationObject = Instantiate(pufferFishPrefab, Vector3.zero, Quaternion.identity);
-                break;
-            case FishType.crab: //9
-                catchPresentationObject = Instantiate(crabFishPrefab, Vector3.zero, Quaternion.identity);
-                break;
-            case FishType.chips: //10
-                catchPresentationObject = Instantiate(fishAndChipsPrefab, Vector3.zero, Quaternion.identity);
-                break;
-            case FishType.cat: //11
-                catchPresentationObject = Instantiate(catFishPrefab, Vector3.zero, Quaternion.identity);
-                break;
-            case FishType.flat: //12
-                catchPresentationObject = Instantiate(flatFishPrefab, Vector3.zero, Quaternion.identity);
-                break;
-            case FishType.rainbow: //13
-                catchPresentationObject = Instantiate(rainbowFishPrefab, Vector3.zero, Quaternion.identity);
-                break;
-        }
+
+        catchPresentationObject = Instantiate(fishDisplayPrefab, Vector3.zero, Quaternion.identity);
 
         presentationFlair.SetActive(true);
 

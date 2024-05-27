@@ -82,19 +82,4 @@ public class Catch
 
 }
 
-public enum FishType //13 types
-{
-    normal = 0,
-    boot = 12,
-    shrimp = 10,
-    duck = 5,
-    clown = 8,
-    sword = 7,
-    blob = 2,
-    puffer = 9,
-    crab = 11,
-    chips = 6,
-    cat = 1,
-    flat = 4,
-    rainbow = 3
-}
+
