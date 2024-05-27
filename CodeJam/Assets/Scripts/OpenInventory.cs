@@ -7,7 +7,12 @@ public class OpenInventory : MonoBehaviour
     public GameObject inventoryPanel;
     public GameObject inventoryButton;
     public GameObject FishingRod;
+    private Upgrades upgrades;
 
+    void Awake()
+    {
+        upgrades = GetComponent<Upgrades>();
+    }
     private void Start()
     {
         ThrowRod.instance.OnUsingRod += CloseInventory;
@@ -20,7 +25,7 @@ public class OpenInventory : MonoBehaviour
     }
     private void Update()
     {
-        if (Upgrades.doDisplayUI)
+        if (upgrades.doDisplayUI)
         {
           inventoryButton.SetActive(true);
         }
