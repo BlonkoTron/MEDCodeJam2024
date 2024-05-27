@@ -76,10 +76,6 @@ void Update()
             ignoreInputUntil = Time.time + ignoreInputInventory; // Set the time until which to ignore input
         }
 
-<<<<<<< HEAD
 }
-=======
-    }
->>>>>>> parent of 137bdd9 (Revert "Not used")
 
 }
