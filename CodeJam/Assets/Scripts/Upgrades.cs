@@ -9,7 +9,7 @@ public class Upgrades : MonoBehaviour
     public int upgradeCostBait; // Base cost for upgrades
     public static int Gold; // Player's current money
 
-    public int money = Gold;
+    public int money;
     public int upgradeableBait; // Flag to indicate if upgrades are available (optional)
 
     public TMP_Text goldText; // Text object to display money (using Text with capital T)
@@ -68,7 +68,7 @@ public class Upgrades : MonoBehaviour
         {
             UICanvas.SetActive(false);
         }
-
+        money = Gold; //Changes to money variables value to that of Gold and it updates money from static variable
         // Update cost text if cost changes during gameplay
         baitCostText.text = "Cost: " + upgradeCostBait.ToString();
         goldText.text = "Gold: " + money.ToString();
