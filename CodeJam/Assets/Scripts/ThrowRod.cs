@@ -76,7 +76,7 @@ void Update()
             ignoreInputUntil = Time.time + ignoreInputInventory; // Set the time until which to ignore input
         }
 
-}
+    }
 
 
 IEnumerator WaitAndMove()
