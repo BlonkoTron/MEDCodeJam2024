@@ -2608,12 +2608,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f2ca4cf9ce26f84e882ff2480dd2ebb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  money: 222
   upgradeCostBait: 3
-  upgradeableBait: 4
+  upgradeableBait: 5
   goldText: {fileID: 4930712884475975597}
   baitCostText: {fileID: 6158104124821208204}
   fishingrodLevelText: {fileID: 136536530}
-  UICanvas: {fileID: 749309563}
+  UICanvas: {fileID: 8529626938561899469}
   upgradeBait: {fileID: 2877101694076260521}
   upgradeSound: {fileID: 8300000, guid: a72386bb6943ee7489fa654a9b8e6d17, type: 3}
   fishingManager: {fileID: 937433582}
@@ -2774,7 +2775,7 @@ GameObject:
   - component: {fileID: 24893375864884118}
   - component: {fileID: 4930712884475975597}
   m_Layer: 5
-  m_Name: goldText
+  m_Name: GoldText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3130,7 +3131,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -52.552414, w: 9.060775}
+  m_margin: {x: 0, y: 0, z: -111.00023, w: 9.060775}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
