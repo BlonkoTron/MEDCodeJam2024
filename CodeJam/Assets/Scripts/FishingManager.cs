@@ -87,7 +87,6 @@ public class FishingManager : MonoBehaviour
         {
             Debug.Log(@catch.type);
         }
-        fishCounterText.text = "Fish acquired: " + fishCounter.ToString();
     }
 
     //unsubscribe from events to prevent memory mess
@@ -191,10 +190,9 @@ public class FishingManager : MonoBehaviour
             else
                 Inventory.instance.AddFish(currentCatch.type);           
 
-            Upgrades.Gold += currentCatch.gold; // Add the gold value of the catch to the player's total gold in Upgrades.cs    
-            fishCounter++; // Increase fish counter       
-            fishCounterText.text = "Fish acquired: " + fishCounter.ToString(); // Update fish counter text
-            
+            fishCounter++;
+            Upgrades.Gold += currentCatch.gold;
+            fishCounterText.text = "Fish acquired: " + fishCounter.ToString();
             DisplayCatch(currentCatch);
         }
         else
