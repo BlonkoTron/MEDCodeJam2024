@@ -63,8 +63,7 @@ public class FishingManager : MonoBehaviour
 
     public TMP_Text fishCounterText;
     private int fishCounter = 0;
-    public Upgrades upgradeManager;
-
+    public Upgrades upgradeManager = new Upgrades();
     // Start is called before the first frame update
     void Start()
     {
@@ -88,7 +87,6 @@ public class FishingManager : MonoBehaviour
         {
             Debug.Log(@catch.type);
         }
-        upgradeManager = gameObject.AddComponent<Upgrades>();
     }
 
     //unsubscribe from events to prevent memory mess
@@ -193,9 +191,9 @@ public class FishingManager : MonoBehaviour
                 Inventory.instance.AddFish(currentCatch.type);           
 
             fishCounter++;
+            upgradeManager.money += currentCatch.gold;
             fishCounterText.text = "Fish acquired: " + fishCounter.ToString();
             DisplayCatch(currentCatch);
-
         }
         else
         {

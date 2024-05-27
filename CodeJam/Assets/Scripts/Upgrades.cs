@@ -1,14 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro; // Assuming you're using TextMesh Pro
 
 public class Upgrades : MonoBehaviour
 {
     public int upgradeCostBait; // Base cost for upgrades
+    public int money; // Player's current money
     public int upgradeableBait; // Flag to indicate if upgrades are available (optional)
 
     public TMP_Text goldText; // Text object to display money (using Text with capital T)
@@ -35,18 +34,17 @@ public class Upgrades : MonoBehaviour
 
     // Reference to the FishingManager script
     public FishingManager fishingManager;
-    public Catch currentCatch;
-    public int money = 0; // Assuming you have a way to track money
+
     // Start is called before the first frame update
     void Start()
     {
         GetComponent<AudioSource>().clip = upgradeSound; // Assuming there's an AudioSource component attached
+
         upgradeBait.gameObject.SetActive(false);
     }
 
     void Update()
     {
-        Debug.Log("hello world");
         // Check if enough money and upgrades are available (optional)
 
         bool canUpgradeBait = money >= upgradeCostBait || upgradeableBait == 0; // Assuming non-nullable
@@ -70,11 +68,8 @@ public class Upgrades : MonoBehaviour
         }
 
         // Update cost text if cost changes during gameplay
-        money += gameObject.GetComponent<Catch>().gold;
-        Debug.Log("Gold is now " + money);
         baitCostText.text = "Cost: " + upgradeCostBait.ToString();
         goldText.text = "Gold: " + money.ToString();
-        Debug.Log("Gold is now " + money);
         fishingrodLevelText.text = $"Fishing rod level: {levelNames[upgradeableBait-1]}";
         if (upgradeableBait == 0)
         {
