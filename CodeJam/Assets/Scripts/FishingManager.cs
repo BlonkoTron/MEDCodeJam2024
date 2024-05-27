@@ -191,8 +191,8 @@ public class FishingManager : MonoBehaviour
             else
                 Inventory.instance.AddFish(currentCatch.type);           
 
-            fishCounter++; // Increase fish counter       
             Upgrades.Gold += currentCatch.gold; // Add the gold value of the catch to the player's total gold in Upgrades.cs    
+            fishCounter++; // Increase fish counter       
             fishCounterText.text = "Fish acquired: " + fishCounter.ToString(); // Update fish counter text
             
             DisplayCatch(currentCatch);

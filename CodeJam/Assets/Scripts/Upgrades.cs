@@ -37,7 +37,7 @@ public class Upgrades : MonoBehaviour
   };
 
     // Reference to the FishingManager script
-    public  FishingManager fishingManager;
+    public FishingManager fishingManager;
 
     // Start is called before the first frame update
     void Start()
