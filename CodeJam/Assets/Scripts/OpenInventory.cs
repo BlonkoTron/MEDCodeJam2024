@@ -7,7 +7,7 @@ public class OpenInventory : MonoBehaviour
     public GameObject inventoryPanel;
     public GameObject inventoryButton;
     public GameObject FishingRod;
-    public FishingManager fishingManager;
+
     private void Start()
     {
         ThrowRod.instance.OnUsingRod += CloseInventory;
@@ -20,7 +20,7 @@ public class OpenInventory : MonoBehaviour
     }
     private void Update()
     {
-        if (fishingManager.upgradeManager.doDisplayUI)
+        if (Upgrades.doDisplayUI)
         {
           inventoryButton.SetActive(true);
         }

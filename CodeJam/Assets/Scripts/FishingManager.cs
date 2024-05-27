@@ -63,7 +63,7 @@ public class FishingManager : MonoBehaviour
 
     public TMP_Text fishCounterText;
     private int fishCounter = 0;
-    public Upgrades upgradeManager = new Upgrades();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -131,11 +131,11 @@ public class FishingManager : MonoBehaviour
 
         if (isFishing)
         {
-            upgradeManager.doDisplayUI = false;
+            Upgrades.doDisplayUI = false;
         }
         else
         {
-            upgradeManager.doDisplayUI = true;
+            Upgrades.doDisplayUI = true;
         }
 
     }
@@ -191,7 +191,7 @@ public class FishingManager : MonoBehaviour
                 Inventory.instance.AddFish(currentCatch.type);           
 
             fishCounter++;
-            upgradeManager.money += currentCatch.gold;
+            Upgrades.money += currentCatch.gold;
             fishCounterText.text = "Fish acquired: " + fishCounter.ToString();
             DisplayCatch(currentCatch);
         }
