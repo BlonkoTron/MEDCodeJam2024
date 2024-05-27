@@ -3,14 +3,7 @@ guid: 7f2ca4cf9ce26f84e882ff2480dd2ebb
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - goldText: {instanceID: 0}
-  - baitCostText: {instanceID: 0}
-  - fishingrodLevelText: {instanceID: 0}
-  - UICanvas: {instanceID: 0}
-  - upgradeBait: {instanceID: 0}
-  - upgradeSound: {fileID: 8300000, guid: a72386bb6943ee7489fa654a9b8e6d17, type: 3}
-  - fishingManager: {instanceID: 0}
+  defaultReferences: []
   executionOrder: 0
   icon: {fileID: 2800000, guid: 2224929be85168d4988ddc1e25935a08, type: 3}
   userData: 
