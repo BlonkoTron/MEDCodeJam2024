@@ -2609,7 +2609,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeCostBait: 3
-  upgradeableBait: 6
+  upgradeableBait: 4
   goldText: {fileID: 4930712884475975597}
   baitCostText: {fileID: 6158104124821208204}
   fishingrodLevelText: {fileID: 136536530}
