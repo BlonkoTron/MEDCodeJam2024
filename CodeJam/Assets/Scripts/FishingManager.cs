@@ -63,6 +63,9 @@ public class FishingManager : MonoBehaviour
     public TMP_Text fishCounterText;
     private int fishCounter = 0;
 
+    private float onehundred = 100;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -74,7 +77,7 @@ public class FishingManager : MonoBehaviour
 
         for (int i = 0; i < possibleCatches.Count; i++)
         {
-            int numOfItems = Mathf.RoundToInt(possibleCatches[i].spawnChance * 100f);
+            int numOfItems = Mathf.RoundToInt(possibleCatches[i].spawnChance * onehundred);
 
             for (int j = 0; j < numOfItems; j++)
             {
@@ -211,7 +214,7 @@ public class FishingManager : MonoBehaviour
         presentationFlair.SetActive(true);
 
     }
-
+        
     private void Reset()
     {
         Debug.Log("Resetting...");
