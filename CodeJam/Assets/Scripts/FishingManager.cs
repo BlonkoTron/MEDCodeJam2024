@@ -191,10 +191,13 @@ public class FishingManager : MonoBehaviour
                 Inventory.instance.AddFish(currentCatch.type);           
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             fishCounter++;
             Upgrades.Gold += currentCatch.gold;
             fishCounterText.text = "Fish acquired: " + fishCounter.ToString();
 =======
+=======
+>>>>>>> parent of 621009a (Revert "f")
             fishCounter++; // Increase fish counter       
             Upgrades.Gold += currentCatch.gold; // Add the gold value of the catch to the player's total gold in Upgrades.cs    
             fishCounterText.text = "Fish acquired: " + fishCounter.ToString(); // Update fish counter text
