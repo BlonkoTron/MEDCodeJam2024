@@ -35,7 +35,7 @@ public class Upgrades : MonoBehaviour
   };
 
     // Reference to the FishingManager script
-    public FishingManager fishingManager;
+    public  FishingManager fishingManager;
 
     // Start is called before the first frame update
     void Start()
@@ -68,7 +68,7 @@ public class Upgrades : MonoBehaviour
         {
             UICanvas.SetActive(false);
         }
-        money = Gold; //Changes to money variables value to that of Gold and it updates money from static variable
+        
         // Update cost text if cost changes during gameplay
         baitCostText.text = "Cost: " + upgradeCostBait.ToString();
         goldText.text = "Gold: " + money.ToString();
