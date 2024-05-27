@@ -36,7 +36,6 @@ public class Upgrades : MonoBehaviour
     // Reference to the FishingManager script
     public FishingManager fishingManager;
     public Catch currentCatch;
-    public GameObject catchObject;
     public int money = 0; // Assuming you have a way to track money
     // Start is called before the first frame update
     void Start()
@@ -47,6 +46,7 @@ public class Upgrades : MonoBehaviour
 
     void Update()
     {
+        Debug.Log("hello world");
         // Check if enough money and upgrades are available (optional)
 
         bool canUpgradeBait = money >= upgradeCostBait || upgradeableBait == 0; // Assuming non-nullable
@@ -69,22 +69,21 @@ public class Upgrades : MonoBehaviour
             UICanvas.SetActive(false);
         }
 
-
-
+        // Update cost text if cost changes during gameplay
+        money += gameObject.GetComponent<Catch>().gold;
+        Debug.Log("Gold is now " + money);
         baitCostText.text = "Cost: " + upgradeCostBait.ToString();
         goldText.text = "Gold: " + money.ToString();
+        Debug.Log("Gold is now " + money);
         fishingrodLevelText.text = $"Fishing rod level: {levelNames[upgradeableBait-1]}";
         if (upgradeableBait == 0)
         {
             baitCostText.text = "Max";
         }
-        if (catchObject != null) // Check if reference is not null
-        {
-            money += catchObject.GetComponent<Catch>().gold; // Update money
-        }
+
     }
 
-    public void UpgradeBait()
+    public void UpgradeBait() // Renamed for clarity
     {
         // Check if enough money and upgrade is available
         if (money >= upgradeCostBait && upgradeableBait > 0)
