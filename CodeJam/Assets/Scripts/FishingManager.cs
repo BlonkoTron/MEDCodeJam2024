@@ -191,7 +191,7 @@ public class FishingManager : MonoBehaviour
                 Inventory.instance.AddFish(currentCatch.type);           
 
             fishCounter++;
-            Upgrades.money += currentCatch.gold;
+            Upgrades.Gold += currentCatch.gold;
             fishCounterText.text = "Fish acquired: " + fishCounter.ToString();
             DisplayCatch(currentCatch);
         }

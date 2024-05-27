@@ -7,7 +7,9 @@ using TMPro; // Assuming you're using TextMesh Pro
 public class Upgrades : MonoBehaviour
 {
     public int upgradeCostBait; // Base cost for upgrades
-    public static int money; // Player's current money
+    public static int Gold; // Player's current money
+
+    public int money = Gold;
     public int upgradeableBait; // Flag to indicate if upgrades are available (optional)
 
     public TMP_Text goldText; // Text object to display money (using Text with capital T)
@@ -70,7 +72,7 @@ public class Upgrades : MonoBehaviour
         // Update cost text if cost changes during gameplay
         baitCostText.text = "Cost: " + upgradeCostBait.ToString();
         goldText.text = "Gold: " + money.ToString();
-        fishingrodLevelText.text = $"Fishing rod level: {levelNames[upgradeableBait-1]}";
+        fishingrodLevelText.text = $"Fishing rod level: {levelNames[upgradeableBait]}";
         if (upgradeableBait == 0)
         {
             baitCostText.text = "Max";
