@@ -9,23 +9,24 @@ public class Upgrades : MonoBehaviour
     public int upgradeCostBait; // Base cost for upgrades
     public static int Gold; // Player's current money
 
-    public int money;
+    public int money; // Placeholder for current money
     public int upgradeableBait; // Flag to indicate if upgrades are available (optional)
 
     public TMP_Text goldText; // Text object to display money (using Text with capital T)
-    public TMP_Text baitCostText;
-    public TMP_Text fishingrodLevelText;
+    public TMP_Text baitCostText; // Text object to display upgrade cost
+    public TMP_Text fishingrodLevelText; // Text object to display upgrade level
 
-    public GameObject UICanvas;
+    public GameObject UICanvas; // Reference to the UI Canvas 
 
-    private int upgradeLevelBait;
+    private int upgradeLevelBait; // How many upgrades you have left before you reach max level
+
     public Button upgradeBait; // Button to upgrade bait
-    public AudioClip upgradeSound;
+    public AudioClip upgradeSound; // Sound to play when upgrading
 
     [HideInInspector]
-    public static bool doDisplayUI = true;
+    public static bool doDisplayUI = true; // Flag to show/hide UI
 
-    private List<string> levelNames = new List<string>
+    private List<string> levelNames = new List<string>  // List of level names
   {
     "SUPERSONIC",
     "EPIIIC",
@@ -42,7 +43,7 @@ public class Upgrades : MonoBehaviour
     {
         GetComponent<AudioSource>().clip = upgradeSound; // Assuming there's an AudioSource component attached
 
-        upgradeBait.gameObject.SetActive(false);
+        upgradeBait.gameObject.SetActive(false); // Hide upgrade button at start
     }
 
     void Update()
@@ -51,31 +52,38 @@ public class Upgrades : MonoBehaviour
 
         bool canUpgradeBait = money >= upgradeCostBait || upgradeableBait == 0; // Assuming non-nullable
 
-        if (doDisplayUI)
+        if (doDisplayUI) // Check if UI should be displayed
         {
-            UICanvas.SetActive(true);
-            if (canUpgradeBait)
+            UICanvas.SetActive(true); // Show UI
+            if (canUpgradeBait) // Check if bait can be upgraded
             {
-                //Debug.Log("It thinks you can upgrade bait now");
-                upgradeBait.gameObject.SetActive(true);
+                upgradeBait.gameObject.SetActive(true); // Show upgrade button
             }
             else
             {
-                upgradeBait.gameObject.SetActive(false);
+                upgradeBait.gameObject.SetActive(false); // Hide upgrade button
+            
             }
         }
         else
         {
-            UICanvas.SetActive(false);
+            UICanvas.SetActive(false); // Hide UI
         }
-        
-        // Update cost text if cost changes during gameplay
-        baitCostText.text = "Cost: " + upgradeCostBait.ToString();
-        goldText.text = "Gold: " + money.ToString();
-        fishingrodLevelText.text = $"Fishing rod level: {levelNames[upgradeableBait]}";
-        if (upgradeableBait == 0)
+
+        /*This if statement is to change the money variable to the static variable Gold, 
+        but also let you be able to change the money variable in the inspector 
+        as long as you do it before the game starts. This is useful for testing purposes. */
+        if (Gold != 0) // Check if Gold has changed away from default value
         {
-            baitCostText.text = "Max";
+            money = Gold; // Changes the money variable's value to that of Gold and it updates money from static variable
+        }
+   
+        baitCostText.text = "Cost: " + upgradeCostBait.ToString(); // Display upgrade cost
+        goldText.text = "Gold: " + money.ToString(); // Display money
+        fishingrodLevelText.text = $"Fishing rod level: {levelNames[upgradeableBait]}"; // Display upgrade level of fishing rod
+        if (upgradeableBait == 0) // Check if max level is reached
+        {
+            baitCostText.text = "Max"; // Display max level
         }
 
     }
@@ -89,7 +97,7 @@ public class Upgrades : MonoBehaviour
             money -= upgradeCostBait; // Deduct cost from money
             upgradeCostBait *= 2; // Increase cost for next upgrade
             upgradeableBait--; // Reduce available upgrades (optional)
-            Debug.Log("Bait upgraded to level " + upgradeLevelBait);
+            Debug.Log("Bait upgraded to level " + upgradeLevelBait); // Log upgrade level
             // Play upgrade sound using AudioSource
             fishingManager.maxCatchTime -= 2; // Decrease maxCatchTime by 2 seconds from FishingManager
             GetComponent<AudioSource>().Play(); // Assuming there's an AudioSource component attached
