@@ -20,14 +20,14 @@ public event UsingRod OnUsingRod;
 
 public event UsingRod OnPullRod;
 
-void Awake()
+private void Awake()
 {
     if (instance == null)
     {
         instance = this;
     }
 }
-void Update()
+private void Update()
 {
     if (Time.time < ignoreInputUntil)
     {
@@ -36,14 +36,14 @@ void Update()
 
     Vector3 acceleration = Input.acceleration;
 
-    if (acceleration.sqrMagnitude > threshold * threshold && !isThrown)
+    if (acceleration.sqrMagnitude > threshold  && !isThrown)
     {
         OnUsingRod?.Invoke();
         Debug.Log("Thrown!");
         isThrown = true;
         ignoreInputUntil = Time.time + ignoreInputDuration; // Set the time until which to ignore input
     }
-    else if (acceleration.sqrMagnitude > threshold * threshold && isThrown)
+    else if (acceleration.sqrMagnitude > threshold  && isThrown)
     {
         isThrown = false;
         OnPullRod?.Invoke();
